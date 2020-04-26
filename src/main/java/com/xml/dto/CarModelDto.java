@@ -1,12 +1,11 @@
 package com.xml.dto;
 
-public class CarBrandDto {
+public class CarModelDto {
 
     private Long id;
     private String name;
 
-    public CarBrandDto() {
-
+    public CarModelDto() {
     }
 
     public Long getId() {

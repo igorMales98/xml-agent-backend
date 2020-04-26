@@ -2,6 +2,7 @@ package com.xml.controller;
 
 import com.xml.dto.CarBrandDto;
 import com.xml.mapper.CarBrandDtoMapper;
+import com.xml.model.CarBrand;
 import com.xml.service.CarBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,22 +16,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
-@RequestMapping(value = "/api/carBrand", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/car-brand", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CarBrandController {
 
     @Autowired
     private CarBrandService carBrandService;
 
+    @Autowired
     private CarBrandDtoMapper carBrandDtoMapper;
 
     @GetMapping(value = "/getAll")
     public ResponseEntity<List<CarBrandDto>> getAll() {
 
         try {
-            List<CarBrandDto> carBrandDtos = this.carBrandService.getAll().stream().map(carBrandDtoMapper::toDto).
-                    collect(Collectors.toList());
+            List<CarBrandDto> carBrandDtos = this.carBrandService.getAll()
+                    .stream().map(carBrandDtoMapper::toDto).
+                            collect(Collectors.toList());
             return new ResponseEntity<>(carBrandDtos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
