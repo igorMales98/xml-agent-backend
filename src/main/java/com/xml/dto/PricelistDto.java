@@ -1,16 +1,12 @@
-package com.xml.model;
+package com.xml.dto;
 
-import javax.persistence.*;
+public class PricelistDto {
 
-@Entity
-public class Pricelist {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
     private Float pricePerDay;
+
+    public PricelistDto() {
+    }
 
     public Long getId() {
         return id;
@@ -27,8 +23,4 @@ public class Pricelist {
     public void setPricePerDay(Float pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
-
-
-// cena za km preko dozvoljnog ako nije unlimited
-
 }
