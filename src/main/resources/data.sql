@@ -1,6 +1,5 @@
 INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `business_social_number`, `firm_name`) VALUES ('FIRM', '1', 'Sime Milosevica 5', 'Novi Sad', 'Serbia', 'baijc@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'agentfirm', '12345', 'Dom Baijc');
 
-
 INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('1', 'Volvo');
 INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('2', 'Saab');
 INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('3', 'Mercedes Benz');

@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
 
 
-
 @Entity
 public class Car {
 
@@ -154,5 +153,13 @@ public class Car {
 
     public void setHasAndroid(boolean hasAndroid) {
         this.hasAndroid = hasAndroid;
+    }
+
+    public CarModel getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(CarModel carModel) {
+        this.carModel = carModel;
     }
 }

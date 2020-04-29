@@ -15,6 +15,7 @@ public class CreateAdvertisementDto {
     private float mileage;
     private int childSeats;
     private boolean hasACDW;
+    private float allowedDistance;
 
     public CreateAdvertisementDto() {
     }
@@ -105,6 +106,14 @@ public class CreateAdvertisementDto {
 
     public void setHasACDW(boolean hasACDW) {
         this.hasACDW = hasACDW;
+    }
+
+    public float getAllowedDistance() {
+        return allowedDistance;
+    }
+
+    public void setAllowedDistance(float allowedDistance) {
+        this.allowedDistance = allowedDistance;
     }
 
     @Override
