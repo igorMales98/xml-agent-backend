@@ -6,16 +6,22 @@ import com.xml.model.Advertisement;
 import com.xml.model.Car;
 import com.xml.model.User;
 import com.xml.repository.AdvertisementRepository;
-import com.xml.repository.CarRepository;
 import com.xml.service.AdvertisementService;
 import com.xml.service.CarService;
 import com.xml.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
+import java.util.List;
 
 @Service
 public class AdvertisementServiceImpl implements AdvertisementService {
@@ -76,5 +82,36 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();
+    }
+
+    @Override
+    public void uploadPhotos(MultipartFile[] files, Long id) throws IOException {
+        Path resourceDirectory = Paths.get("src", "main", "resources");
+        String path = resourceDirectory.toFile().getAbsolutePath() + "\\images\\advertisement\\" + id + "\\";
+        if (!new File(path).exists()) {
+            new File(path).mkdir();
+        }
+        for (int i = 0; i < files.length; i++) {
+            String imgName = files[i].getOriginalFilename();
+            String filePath = path + imgName;
+            File dest = new File(filePath);
+            files[i].transferTo(dest);
+        }
+    }
+
+    @Override
+    public List<Advertisement> getInPeriod(String dateFrom, String dateTo) {
+        dateFrom = dateFrom.replace('T', ' ');
+        dateTo = dateTo.replace('T', ' ');
+        System.out.println("datum od" + dateFrom);
+        System.out.println("datum do" + dateTo);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateFromTime = LocalDateTime.parse(dateFrom, formatter);
+        LocalDateTime dateFromTo = LocalDateTime.parse(dateTo, formatter);
+
+        System.out.println("datum od" + dateFromTime);
+        System.out.println("datum do" + dateFromTo);
+        return this.advertisementRepository.getInPeriod(dateFromTime, dateFromTo);
     }
 }
