@@ -13,4 +13,6 @@ public interface AdvertisementService {
     void uploadPhotos(MultipartFile[] files, Long id) throws IOException;
 
     List<Advertisement> getInPeriod(String dateFrom, String dateTo);
+
+    List<String> getAdvertisementPhotos(Long id) throws IOException;
 }

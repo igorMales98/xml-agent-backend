@@ -15,13 +15,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class AdvertisementServiceImpl implements AdvertisementService {
@@ -113,5 +119,25 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         System.out.println("datum od" + dateFromTime);
         System.out.println("datum do" + dateFromTo);
         return this.advertisementRepository.getInPeriod(dateFromTime, dateFromTo);
+    }
+
+    @Override
+    public List<String> getAdvertisementPhotos(Long id) throws IOException {
+        Path resourceDirectory = Paths.get("src", "main", "resources");
+        String path = resourceDirectory.toFile().getAbsolutePath() + "\\images\\advertisement\\" + id + "\\";
+        Set<String> allFiles = Stream.of(new File(path).listFiles())
+                .filter(file -> !file.isDirectory())
+                .map(File::getName)
+                .collect(Collectors.toSet());
+        System.out.println(allFiles);
+        List<String> allEncodedImages = new ArrayList<>();
+        String encodeImage = null;
+        for (String file : allFiles) {
+            System.out.println(file);
+            File image = new File(path + file);
+            encodeImage = Base64.getEncoder().withoutPadding().encodeToString(Files.readAllBytes(image.toPath()));
+            allEncodedImages.add(encodeImage);
+        }
+        return allEncodedImages;
     }
 }

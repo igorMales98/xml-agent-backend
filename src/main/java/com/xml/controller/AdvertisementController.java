@@ -5,9 +5,7 @@ import com.xml.dto.CreateAdvertisementDto;
 import com.xml.mapper.AdvertisementDtoMapper;
 import com.xml.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,10 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -69,23 +64,11 @@ public class AdvertisementController {
         }
     }
 
-    @GetMapping(value = "/getAdvertisementsPhotos")
-    public ResponseEntity<?> getAdvertisementsPhotos() {
+    @GetMapping(value = "/getAdvertisementsPhotos/{id}")
+    public ResponseEntity<?> getAdvertisementsPhotos(@PathVariable("id") Long id) {
         try {
-            Path resourceDirectory = Paths.get("src", "main", "resources");
-            String path = resourceDirectory.toFile().getAbsolutePath() + "\\images\\advertisement\\" + '1' + "\\";
-            Set<String> allFiles = Stream.of(new File(path).listFiles())
-                    .filter(file -> !file.isDirectory())
-                    .map(File::getName)
-                    .collect(Collectors.toSet());
-            System.out.println(allFiles);
-            byte[] fileContent = new byte[0];
-            for (String file : allFiles) {
-                File image = new File(file);
-                fileContent = Files.readAllBytes(image.toPath());
-            }
-
-            return new ResponseEntity<>(fileContent, HttpStatus.OK);
+            List<String> allEncodedImages = this.advertisementService.getAdvertisementPhotos(id);
+            return new ResponseEntity<>(allEncodedImages, HttpStatus.OK);
 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
