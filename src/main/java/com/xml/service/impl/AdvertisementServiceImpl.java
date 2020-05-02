@@ -48,6 +48,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private TransmissionTypeDtoMapper transmissionTypeDtoMapper;
 
     @Autowired
+    private PricelistDtoMapper pricelistDtoMapper;
+
+    @Autowired
     private AdvertisementRepository advertisementRepository;
 
     @Autowired
@@ -57,7 +60,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private UserService userService;
 
     @Override
-    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto) {
+    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto) throws ParseException {
         Car newCar = new Car();
         try {
             newCar.setCarBrand(carBrandDtoMapper.toEntity(createAdvertisementDto.getCarBrand()));
@@ -85,6 +88,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                 plus(1, ChronoUnit.DAYS));
         advertisement.setAvailableFrom(createAdvertisementDto.getAvailableFrom());
         advertisement.setAvailableTo(createAdvertisementDto.getAvailableTo());
+        advertisement.setPricelist(pricelistDtoMapper.toEntity(createAdvertisementDto.getPricelist()));
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();

@@ -1,20 +1,17 @@
 package com.xml.dto;
 
-import com.xml.model.Car;
-import com.xml.model.Comment;
-import com.xml.model.User;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
 public class AdvertisementDto {
 
     private Long id;
-    private Car car;
-    private User advertiser;
+    private CarDto car;
+    private UserDto advertiser;
     private LocalDateTime availableFrom;
     private LocalDateTime availableTo;
-    private Set<Comment> comments;
+    private Set<CommentDto> comments;
+    private PricelistDto pricelist;
 
     public AdvertisementDto() {
     }
@@ -27,19 +24,19 @@ public class AdvertisementDto {
         this.id = id;
     }
 
-    public Car getCar() {
+    public CarDto getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(CarDto car) {
         this.car = car;
     }
 
-    public User getAdvertiser() {
+    public UserDto getAdvertiser() {
         return advertiser;
     }
 
-    public void setAdvertiser(User advertiser) {
+    public void setAdvertiser(UserDto advertiser) {
         this.advertiser = advertiser;
     }
 
@@ -59,11 +56,19 @@ public class AdvertisementDto {
         this.availableTo = availableTo;
     }
 
-    public Set<Comment> getComments() {
+    public Set<CommentDto> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Comment> comments) {
+    public void setComments(Set<CommentDto> comments) {
         this.comments = comments;
+    }
+
+    public PricelistDto getPricelist() {
+        return pricelist;
+    }
+
+    public void setPricelist(PricelistDto pricelist) {
+        this.pricelist = pricelist;
     }
 }
