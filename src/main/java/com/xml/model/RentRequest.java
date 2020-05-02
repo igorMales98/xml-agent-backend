@@ -20,10 +20,10 @@ public class RentRequest {
     @Column(nullable = false)
     private LocalDateTime reservedTo;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinTable(name = "rented_cars", joinColumns = @JoinColumn(name = "rent_request_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"))
-    private Set<Car> carsForRent;
+    @ManyToMany
+    @JoinTable(name = "rented_advertisements", joinColumns = @JoinColumn(name = "rent_request_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "advertisement_id", referencedColumnName = "id"))
+    private Set<Advertisement> advertisementsForRent;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -33,4 +33,51 @@ public class RentRequest {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getReservedFrom() {
+        return reservedFrom;
+    }
+
+    public void setReservedFrom(LocalDateTime reservedFrom) {
+        this.reservedFrom = reservedFrom;
+    }
+
+    public LocalDateTime getReservedTo() {
+        return reservedTo;
+    }
+
+    public void setReservedTo(LocalDateTime reservedTo) {
+        this.reservedTo = reservedTo;
+    }
+
+    public Set<Advertisement> getAdvertisementsForRent() {
+        return advertisementsForRent;
+    }
+
+    public void setAdvertisementsForRent(Set<Advertisement> advertisementsForRent) {
+        this.advertisementsForRent = advertisementsForRent;
+    }
+
+    public RentRequestStatus getRentRequestStatus() {
+        return rentRequestStatus;
+    }
+
+    public void setRentRequestStatus(RentRequestStatus rentRequestStatus) {
+        this.rentRequestStatus = rentRequestStatus;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

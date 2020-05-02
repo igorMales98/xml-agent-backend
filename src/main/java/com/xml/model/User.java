@@ -18,16 +18,16 @@ public class User {
     @Column(insertable = false, updatable = false)
     protected String type;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     protected String username;
 
     @Column(nullable = false)
     protected String password;
 
-    @Column()
+    @Column
     protected String firstName;
 
-    @Column()
+    @Column
     protected String lastName;
 
     @Column(nullable = false)

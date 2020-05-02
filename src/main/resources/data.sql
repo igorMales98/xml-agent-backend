@@ -27,7 +27,7 @@ INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('15',
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('16', 'Astra', '6');
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('17', 'Corsa', '6');
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('18', 'Vectra', '6');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('19', '306', '7');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('19', '307', '7');
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('20', '407', '7');
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('21', '5008', '7');
 INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('22', 'Clio', '8');
@@ -41,6 +41,7 @@ INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('4', 'Minivan');
 INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('5', 'SUV');
 INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('6', 'Pickup');
 INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('7', 'Cabriolet');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('8', 'Caravan');
 
 INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('1', 'Petrol');
 INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('2', 'Diesel');
@@ -55,6 +56,18 @@ INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('3', 'Semi-au
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_per_day`) VALUES ('1', '10');
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_per_day`) VALUES ('2', '20');
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_per_day`) VALUES ('3', '30');
+
+INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('1', '1000000', '9', '2', b'1', b'1', '100000', '1', '1', '1', '1', '1', '1');
+INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('2', '1000000', '8.5', '0', b'1', b'0', '200000', '2', '2', '8', '5', '2', '3');
+INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('3', '500', '8', '0', b'0', b'0', '155000', '3', '7', '2', '19', '2', '1');
+INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('4', '1200', '10', '0', b'1', b'1', '12000', '3', '5', '8', '13', '2', '2');
+
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('1', '2020-05-01 22:00:00.000000', '2020-05-20 22:00:00.000000', '1', '1', '1');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('2', '2020-05-05 22:00:00.000000', '2020-05-25 22:00:00.000000', '1', '2', '1');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('3', '2020-05-10 22:00:00.000000', '2020-05-20 22:00:00.000000', '1', '3', '2');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('4', '2020-05-10 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '4', '3');
+
+
 
 
 
