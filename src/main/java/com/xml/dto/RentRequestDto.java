@@ -1,37 +1,22 @@
-package com.xml.model;
+package com.xml.dto;
 
 import com.xml.enummeration.RentRequestStatus;
+import com.xml.model.Advertisement;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
-@Entity
-public class RentRequest {
+public class RentRequestDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private LocalDateTime reservedFrom;
-
-    @Column(nullable = false)
     private LocalDateTime reservedTo;
-
-    @ManyToMany
-    @JoinTable(name = "rented_advertisements", joinColumns = @JoinColumn(name = "rent_request_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "advertisement_id", referencedColumnName = "id"))
-    private Set<Advertisement> advertisementsForRent;
-
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    private Set<AdvertisementDto> advertisementsForRent;
     private RentRequestStatus rentRequestStatus;
+    private UserDto customer;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    public RentRequestDto() {
+    }
 
     public Long getId() {
         return id;
@@ -57,11 +42,11 @@ public class RentRequest {
         this.reservedTo = reservedTo;
     }
 
-    public Set<Advertisement> getAdvertisementsForRent() {
+    public Set<AdvertisementDto> getAdvertisementsForRent() {
         return advertisementsForRent;
     }
 
-    public void setAdvertisementsForRent(Set<Advertisement> advertisementsForRent) {
+    public void setAdvertisementsForRent(Set<AdvertisementDto> advertisementsForRent) {
         this.advertisementsForRent = advertisementsForRent;
     }
 
@@ -73,11 +58,11 @@ public class RentRequest {
         this.rentRequestStatus = rentRequestStatus;
     }
 
-    public Customer getCustomer() {
+    public UserDto getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(UserDto customer) {
         this.customer = customer;
     }
 }
