@@ -1,6 +1,7 @@
 package com.xml.dto;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public class CreateAdvertisementDto {
 
@@ -16,6 +17,8 @@ public class CreateAdvertisementDto {
     private int childSeats;
     private boolean hasACDW;
     private float allowedDistance;
+    private Map<String, String> discount;
+    // private String discount;
 
     public CreateAdvertisementDto() {
     }
@@ -116,9 +119,25 @@ public class CreateAdvertisementDto {
         this.allowedDistance = allowedDistance;
     }
 
+    public Map<String, String> getDiscounts() {
+        return discount;
+    }
+
+    public void setDiscounts(Map<String, String> discount) {
+        this.discount = discount;
+    }
+
+    /*public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }*/
+
     @Override
     public String toString() {
-        return "AdvertisementDto{" +
+        return "CreateAdvertisementDto{" +
                 "carBrand=" + carBrand +
                 ", carModel=" + carModel +
                 ", carClass=" + carClass +
@@ -130,6 +149,8 @@ public class CreateAdvertisementDto {
                 ", mileage=" + mileage +
                 ", childSeats=" + childSeats +
                 ", hasACDW=" + hasACDW +
+                ", allowedDistance=" + allowedDistance +
+                ", discount=" + discount +
                 '}';
     }
 }
