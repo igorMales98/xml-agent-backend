@@ -29,6 +29,10 @@ public class Advertisement {
     @OneToMany(mappedBy = "advertisement")
     private Set<Comment> comments;
 
+    @ManyToOne
+    @JoinColumn(name = "pricelist_id")
+    private Pricelist pricelist;
+
     public Advertisement() {
     }
 
@@ -78,5 +82,13 @@ public class Advertisement {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Pricelist getPricelist() {
+        return pricelist;
+    }
+
+    public void setPricelist(Pricelist pricelist) {
+        this.pricelist = pricelist;
     }
 }

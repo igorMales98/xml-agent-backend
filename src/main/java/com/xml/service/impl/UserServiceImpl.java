@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService {
     public User getUser(Long id) {
         return this.userRepository.getOne(id);
     }
+
+    @Override
+    public void saveUser(User user) {
+        this.userRepository.save(user);
+    }
 }

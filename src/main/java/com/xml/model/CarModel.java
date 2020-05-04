@@ -1,5 +1,7 @@
 package com.xml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,6 +19,7 @@ public class CarModel {
     @JoinColumn(name = "car_brand_id", nullable = false)
     private CarBrand carBrand;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "carModel")
     private Set<Car> cars;
 

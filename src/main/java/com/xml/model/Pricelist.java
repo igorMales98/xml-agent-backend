@@ -1,6 +1,7 @@
 package com.xml.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Pricelist {
@@ -17,6 +18,9 @@ public class Pricelist {
 
     @Column
     private Float priceForCDW;
+
+    @OneToMany(mappedBy = "pricelist")
+    private Set<Advertisement> advertisements;
 
     public Long getId() {
         return id;
