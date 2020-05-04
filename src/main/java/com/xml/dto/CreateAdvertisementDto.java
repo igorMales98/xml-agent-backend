@@ -1,6 +1,7 @@
 package com.xml.dto;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreateAdvertisementDto {
@@ -17,8 +18,7 @@ public class CreateAdvertisementDto {
     private int childSeats;
     private boolean hasACDW;
     private float allowedDistance;
-    private Map<String, String> discount;
-    // private String discount;
+    private String discount;
 
     public CreateAdvertisementDto() {
     }
@@ -119,21 +119,13 @@ public class CreateAdvertisementDto {
         this.allowedDistance = allowedDistance;
     }
 
-    public Map<String, String> getDiscounts() {
-        return discount;
-    }
-
-    public void setDiscounts(Map<String, String> discount) {
-        this.discount = discount;
-    }
-
-    /*public String getDiscount() {
+    public String getDiscount() {
         return discount;
     }
 
     public void setDiscount(String discount) {
         this.discount = discount;
-    }*/
+    }
 
     @Override
     public String toString() {
@@ -152,6 +144,15 @@ public class CreateAdvertisementDto {
                 ", allowedDistance=" + allowedDistance +
                 ", discount=" + discount +
                 '}';
+    }
+
+    public Map<String, String> convertToHashMap(String discounts) {
+        Map<String, String> temp = new HashMap<>();
+        String[] discountsList = this.discount.split(":");
+        for (String discount : discountsList) {
+            temp.put(discount.split("\\?")[0], discount.split("\\?")[1]);
+        }
+        return temp;
     }
 }
 

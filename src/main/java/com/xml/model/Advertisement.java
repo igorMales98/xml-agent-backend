@@ -36,6 +36,9 @@ public class Advertisement {
     private Pricelist pricelist;
 
     @ElementCollection
+    @MapKeyColumn(name="days")
+    @Column(name="discount")
+    @CollectionTable(name="advertisement_discount", joinColumns=@JoinColumn(name="advertisement_id"))
     private Map<String, String> discount;
 
     public Advertisement() {
