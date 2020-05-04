@@ -1,9 +1,12 @@
 package com.xml.dto;
 
+
 public class PricelistDto {
 
     private Long id;
     private Float pricePerDay;
+    private Float pricePerKm;
+    private Float priceForCDW;
 
     public PricelistDto() {
     }
@@ -22,5 +25,21 @@ public class PricelistDto {
 
     public void setPricePerDay(Float pricePerDay) {
         this.pricePerDay = pricePerDay;
+    }
+
+    public Float getPricePerKm() {
+        return pricePerKm;
+    }
+
+    public void setPricePerKm(Float pricePerKm) {
+        this.pricePerKm = pricePerKm;
+    }
+
+    public Float getPriceForCDW() {
+        return priceForCDW;
+    }
+
+    public void setPriceForCDW(Float priceForCDW) {
+        this.priceForCDW = priceForCDW;
     }
 }

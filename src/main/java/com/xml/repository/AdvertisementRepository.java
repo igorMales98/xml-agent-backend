@@ -13,4 +13,6 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, Lo
 
     @Query(value = "SELECT * FROM advertisement a WHERE (:dateFrom BETWEEN a.available_from AND a.available_to) AND (:dateTo BETWEEN a.available_from AND a.available_to)", nativeQuery = true)
     List<Advertisement> getInPeriod(LocalDateTime dateFrom, LocalDateTime dateTo);
+
+    List<Advertisement> getAdvertisementByAdvertiser_id(Long agentId);
 }

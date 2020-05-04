@@ -16,4 +16,6 @@ public interface AdvertisementService {
     List<Advertisement> getInPeriod(String dateFrom, String dateTo);
 
     List<String> getAdvertisementPhotos(Long id) throws IOException;
+
+    List<Advertisement> getAll(Long agentId);
 }

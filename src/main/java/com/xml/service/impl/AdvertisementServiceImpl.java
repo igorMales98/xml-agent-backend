@@ -145,4 +145,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         }
         return allEncodedImages;
     }
+
+    @Override
+    public List<Advertisement> getAll(Long agentId) { //TODO: prikazivanje oglasa jednog agenta
+        return advertisementRepository.getAdvertisementByAdvertiser_id(agentId);
+    }
 }
