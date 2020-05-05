@@ -3,6 +3,8 @@ package com.xml.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -32,6 +34,12 @@ public class Advertisement {
     @ManyToOne
     @JoinColumn(name = "pricelist_id")
     private Pricelist pricelist;
+
+    @ElementCollection
+    @MapKeyColumn(name="days")
+    @Column(name="discount")
+    @CollectionTable(name="advertisement_discount", joinColumns=@JoinColumn(name="advertisement_id"))
+    private Map<String, String> discount;
 
     public Advertisement() {
     }
@@ -90,5 +98,13 @@ public class Advertisement {
 
     public void setPricelist(Pricelist pricelist) {
         this.pricelist = pricelist;
+    }
+
+    public Map<String, String> getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Map<String, String> discount) {
+        this.discount = discount;
     }
 }
