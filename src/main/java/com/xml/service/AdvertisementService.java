@@ -18,4 +18,6 @@ public interface AdvertisementService {
     List<String> getAdvertisementPhotos(Long id) throws IOException;
 
     List<Advertisement> getAll(Long agentId);
+
+    Integer getTimesRented(Long id);
 }

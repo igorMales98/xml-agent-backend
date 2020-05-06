@@ -14,6 +14,10 @@ public class Report {
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
+    @ManyToOne
+    @JoinColumn(name = "rent_request_id", nullable = false)
+    private RentRequest rentRequest;
+
     @Column(nullable = false)
     private float km;
 
@@ -59,5 +63,13 @@ public class Report {
 
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
+    }
+
+    public RentRequest getRentRequest() {
+        return rentRequest;
+    }
+
+    public void setRentRequest(RentRequest rentRequest) {
+        this.rentRequest = rentRequest;
     }
 }

@@ -37,7 +37,6 @@ public class AdvertisementController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         }
-
     }
 
     @PostMapping(value = "/uploadPhotos/{id}")
@@ -62,6 +61,7 @@ public class AdvertisementController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
     @GetMapping(value = "/getAll/{agentId}")
     public ResponseEntity<List<AdvertisementDto>> getAll(@PathVariable("agentId") Long agentId) {
         try {
@@ -80,6 +80,17 @@ public class AdvertisementController {
             return new ResponseEntity<>(allEncodedImages, HttpStatus.OK);
 
         } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(value = "/getTimesRented/{id}")
+    public ResponseEntity<Integer> getTimesRented(@PathVariable("id") Long id) {
+        try {
+            Integer timesRented = this.advertisementService.getTimesRented(id);
+            return new ResponseEntity<>(timesRented, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

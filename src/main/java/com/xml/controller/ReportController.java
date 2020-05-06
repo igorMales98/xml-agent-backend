@@ -28,4 +28,15 @@ public class ReportController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping(value = "/getRentMileage/{id}")
+    public ResponseEntity<Float> getRentMileage(@PathVariable("id") Long carId) {
+        try {
+            float mileage = this.reportService.getRentMileage(carId);
+            return new ResponseEntity<>(mileage, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

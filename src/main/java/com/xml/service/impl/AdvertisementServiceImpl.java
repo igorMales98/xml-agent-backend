@@ -150,4 +150,10 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     public List<Advertisement> getAll(Long agentId) { //TODO: prikazivanje oglasa jednog agenta
         return advertisementRepository.getAdvertisementByAdvertiser_id(agentId);
     }
+
+    @Override
+    public Integer getTimesRented(Long id) {
+        Car car = this.carService.getOne(id);
+        return this.advertisementRepository.getTimesRented(id);
+    }
 }
