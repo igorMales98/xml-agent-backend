@@ -10,4 +10,6 @@ public interface CarService {
     void save(Car car);
 
     List<Car> getAll();
+
+    Car getOne(Long id);
 }

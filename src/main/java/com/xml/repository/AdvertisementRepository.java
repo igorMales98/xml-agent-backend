@@ -15,4 +15,7 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, Lo
     List<Advertisement> getInPeriod(LocalDateTime dateFrom, LocalDateTime dateTo);
 
     List<Advertisement> getAdvertisementByAdvertiser_id(Long agentId);
+
+    @Query(value = "SELECT COUNT(ra.advertisement_id) FROM rented_advertisements ra WHERE ra.advertisement_id IN (SELECT a.id FROM advertisement a WHERE a.car_id = :id)", nativeQuery = true)
+    Integer getTimesRented(Long id);
 }
