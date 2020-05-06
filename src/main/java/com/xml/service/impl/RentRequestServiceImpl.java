@@ -6,6 +6,7 @@ import com.xml.enummeration.RentRequestStatus;
 import com.xml.mapper.AdvertisementDtoMapper;
 import com.xml.model.Advertisement;
 import com.xml.model.Customer;
+import com.xml.model.Pricelist;
 import com.xml.model.RentRequest;
 import com.xml.repository.RentRequestRepository;
 import com.xml.service.RentRequestService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,6 +31,11 @@ public class RentRequestServiceImpl implements RentRequestService {
 
     @Autowired
     private AdvertisementDtoMapper advertisementDtoMapper;
+
+    @Override
+    public List<RentRequest> getAll() {
+        return this.rentRequestRepository.findAll();
+    }
 
     @Override
     public void createRentRequest(RentRequestDto rentRequestDto) throws ParseException {

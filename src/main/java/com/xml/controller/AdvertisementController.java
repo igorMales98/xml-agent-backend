@@ -33,7 +33,9 @@ public class AdvertisementController {
             Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto);
             return new ResponseEntity<>(advertisementId, HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         }
 
     }
