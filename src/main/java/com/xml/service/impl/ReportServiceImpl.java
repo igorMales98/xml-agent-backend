@@ -1,9 +1,12 @@
 package com.xml.service.impl;
 
+import com.xml.dto.CreateReportDto;
 import com.xml.dto.ReportDto;
+import com.xml.mapper.CreateReportDtoMapper;
 import com.xml.mapper.ReportDtoMapper;
 import com.xml.model.Report;
 import com.xml.repository.ReportRepository;
+import com.xml.service.RentRequestService;
 import com.xml.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +23,12 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportDtoMapper reportDtoMapper;
 
+    @Autowired
+    private CreateReportDtoMapper createReportDtoMapper;
+
     @Override
-    public void createReport(ReportDto reportDto) throws ParseException {
-        this.reportRepository.save(reportDtoMapper.toEntity(reportDto));
+    public void createReport(CreateReportDto reportDto) throws ParseException {
+        this.reportRepository.save(createReportDtoMapper.toEntity(reportDto));
     }
 
     @Override

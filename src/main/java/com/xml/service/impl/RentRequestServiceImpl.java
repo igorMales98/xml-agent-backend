@@ -70,4 +70,9 @@ public class RentRequestServiceImpl implements RentRequestService {
 
         this.rentRequestRepository.save(newRentRequest);
     }
+
+    @Override
+    public RentRequest getOne(Long id) {
+        return this.rentRequestRepository.getOne(id);
+    }
 }

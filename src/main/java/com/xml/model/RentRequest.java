@@ -1,5 +1,6 @@
 package com.xml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xml.enummeration.RentRequestStatus;
 
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class RentRequest {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "rentRequest")
     private Set<Report> reports;
 
@@ -82,5 +84,13 @@ public class RentRequest {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Set<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<Report> reports) {
+        this.reports = reports;
     }
 }

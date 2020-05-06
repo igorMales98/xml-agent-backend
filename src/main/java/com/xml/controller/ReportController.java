@@ -1,5 +1,6 @@
 package com.xml.controller;
 
+import com.xml.dto.CreateReportDto;
 import com.xml.dto.RentRequestDto;
 import com.xml.dto.ReportDto;
 import com.xml.service.RentRequestService;
@@ -19,7 +20,7 @@ public class ReportController {
     private ReportService reportService;
 
     @PostMapping(value = "")
-    public ResponseEntity<?> createReport(@RequestBody ReportDto reportDto) {
+    public ResponseEntity<?> createReport(@RequestBody CreateReportDto reportDto) {
         try {
             this.reportService.createReport(reportDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
