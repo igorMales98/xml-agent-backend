@@ -1,6 +1,10 @@
 package com.xml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.DiscriminatorType.STRING;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
@@ -47,6 +51,7 @@ public class User {
 
     @Column
     protected boolean enabled;
+
 
     public Long getId() {
         return id;

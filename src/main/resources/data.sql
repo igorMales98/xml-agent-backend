@@ -1,6 +1,7 @@
 INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `business_social_number`, `firm_name`) VALUES ('FIRM', '1', 'Sime Milosevica 5', 'Novi Sad', 'Serbia', 'baijc@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'agentfirm', '12345', 'Dom Baijc');
-INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `last_name`, `first_name`,`advertisements_posted`) VALUES ('CUSTOMER', '2', 'Puskinova 8', 'Novi Sad', 'Serbia', 'marko@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'jovanjo', 'Jovanovic', 'Jovan','0');
+INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `last_name`, `first_name`,`advertisements_posted`) VALUES ('CUSTOMER', '2', 'Puskinova 8', 'Novi Sad', 'Serbia', 'jovan@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'jovanjo', 'Jovanovic', 'Jovan','0');
 INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `last_name`, `first_name`,`advertisements_posted`) VALUES ('CUSTOMER', '3', 'Cara Dusana 51', 'Novi Sad', 'Serbia', 'mara@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'maricm', 'Maric', 'Mara','0');
+INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `last_name`, `first_name`,`advertisements_posted`) VALUES ('CUSTOMER', '4', 'Masarikova 17', 'Novi Sad', 'Serbia', 'marko@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'markom', 'Markovic', 'Marko','0');
 
 
 INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('1', 'Volvo');
@@ -71,12 +72,22 @@ INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`,
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('4', '2020-05-10 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '4', '3');
 
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('1', b'1', 'Neki komentar...', null, '1','2');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'1', 'Neki drugi komentar...', null, '1','3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'1', 'Neki drugi komentar..', null, '1','3');
 
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('1','cao','2020-05-06 19:48:40.614962','2','1');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('2','cao','2020-05-06 20:06:40.614962','1','2');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('3','sta radis?','2020-05-06 20:08:40.614962','2','1');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('4','nista','2020-05-06 20:10:40.614962','1','2');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('5','ti?','2020-05-06 20:10:40.614962','1','2');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('6','nista','2020-05-06 20:18:40.614962','2','1');
 
+INSERT INTO `xml-agent`.`rent_request` (`id`,`status`,`reserved_from`,`reserved_to`,`customer_id`) VALUES ('1','RESERVED','2020-05-10 22:00:00.000000','2020-05-15 22:00:00.000000','2');
+INSERT INTO `xml-agent`.`rent_request` (`id`,`status`,`reserved_from`,`reserved_to`,`customer_id`) VALUES ('2','RESERVED','2020-05-10 22:00:00.000000','2020-05-15 22:00:00.000000','3');
+INSERT INTO `xml-agent`.`rent_request` (`id`,`status`,`reserved_from`,`reserved_to`,`customer_id`) VALUES ('3','PENDING','2020-05-10 22:00:00.000000','2020-05-15 22:00:00.000000','4');
 
-
-
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`,`advertisement_id`) VALUES ('1','1');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`,`advertisement_id`) VALUES ('2','2');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`,`advertisement_id`) VALUES ('3','3');
 
 
 
