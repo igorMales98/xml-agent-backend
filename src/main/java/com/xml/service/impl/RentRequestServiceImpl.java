@@ -6,7 +6,6 @@ import com.xml.enummeration.RentRequestStatus;
 import com.xml.mapper.AdvertisementDtoMapper;
 import com.xml.model.Advertisement;
 import com.xml.model.Customer;
-import com.xml.model.Pricelist;
 import com.xml.model.RentRequest;
 import com.xml.repository.RentRequestRepository;
 import com.xml.service.RentRequestService;
@@ -18,7 +17,6 @@ import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class RentRequestServiceImpl implements RentRequestService {
@@ -55,9 +53,8 @@ public class RentRequestServiceImpl implements RentRequestService {
         this.userService.saveUser(customer);
 
         Set<Advertisement> advertisementSet = new HashSet<>();
-        AdvertisementDtoMapper advertisementDtoMapper1 = advertisementDtoMapper;
         for (AdvertisementDto advertisementDto : rentRequestDto.getAdvertisementsForRent()) {
-            Advertisement advertisement = advertisementDtoMapper1.toEntity(advertisementDto);
+            Advertisement advertisement = advertisementDtoMapper.toEntity(advertisementDto);
             advertisementSet.add(advertisement);
         }
 
@@ -68,6 +65,19 @@ public class RentRequestServiceImpl implements RentRequestService {
         newRentRequest.setRentRequestStatus(RentRequestStatus.RESERVED);
         newRentRequest.setAdvertisementsForRent(advertisementSet);
 
+        List<RentRequest> rentRequests = this.rentRequestRepository.findAll();
+        for (RentRequest request : rentRequests) {
+            if (request.getRentRequestStatus().equals(RentRequestStatus.PENDING)) {
+                for (Advertisement advertisement : request.getAdvertisementsForRent()) {
+                    for (Advertisement a : advertisementSet) {
+                        if (a.getId().equals(advertisement.getId())) {
+                            request.setRentRequestStatus(RentRequestStatus.CANCELED);
+                            this.rentRequestRepository.save(request);
+                        }
+                    }
+                }
+            }
+        }
         this.rentRequestRepository.save(newRentRequest);
     }
 
