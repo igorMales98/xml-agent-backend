@@ -6,9 +6,10 @@ import com.xml.model.RentRequest;
 public class ReportDto {
 
     private Long id;
-    private CarDto car; //naziv sa fronta, a radimo sa DTO (imena moraju biti ista!!)
+    private CarDto car;
     private float km;
     private String additionalInformation;
+    private RentRequestDto rentRequest;
 
     public ReportDto() {
     }
@@ -43,5 +44,13 @@ public class ReportDto {
 
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
+    }
+
+    public RentRequestDto getRentRequest() {
+        return rentRequest;
+    }
+
+    public void setRentRequest(RentRequestDto rentRequest) {
+        this.rentRequest = rentRequest;
     }
 }

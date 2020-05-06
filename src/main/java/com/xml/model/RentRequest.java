@@ -33,6 +33,9 @@ public class RentRequest {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @OneToMany(mappedBy = "rentRequest")
+    private Set<Report> reports;
+
     public Long getId() {
         return id;
     }
