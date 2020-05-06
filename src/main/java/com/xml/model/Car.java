@@ -1,8 +1,10 @@
 package com.xml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -11,6 +13,9 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "car")
+    private Set<Report> reports;
 
     @ManyToOne
     @JoinColumn(name = "car_brand_id", nullable = false)

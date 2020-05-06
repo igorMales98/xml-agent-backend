@@ -1,6 +1,5 @@
 package com.xml.controller;
 
-import com.xml.dto.FuelTypeDto;
 import com.xml.dto.PricelistDto;
 import com.xml.mapper.PricelistDtoMapper;
 import com.xml.model.Pricelist;
