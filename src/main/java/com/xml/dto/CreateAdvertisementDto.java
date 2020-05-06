@@ -1,6 +1,7 @@
 package com.xml.dto;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -148,9 +149,13 @@ public class CreateAdvertisementDto {
 
     public Map<String, String> convertToHashMap(String discounts) {
         Map<String, String> temp = new HashMap<>();
-        String[] discountsList = this.discount.split(":");
-        for (String discount : discountsList) {
-            temp.put(discount.split("\\?")[0], discount.split("\\?")[1]);
+        String[] discountsList = discounts.split(":");
+        try {
+            for (String discount : discountsList) {
+                temp.put(discount.split("\\?")[0], discount.split("\\?")[1]);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return temp;
         }
         return temp;
     }
