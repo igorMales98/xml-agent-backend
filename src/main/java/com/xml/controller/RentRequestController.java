@@ -2,6 +2,7 @@ package com.xml.controller;
 
 import com.xml.dto.RentRequestDto;
 import com.xml.mapper.RentRequestDtoMapper;
+import com.xml.model.RentRequest;
 import com.xml.service.RentRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,18 @@ public class RentRequestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    @GetMapping(value = "/getFinishedRents")
+    public ResponseEntity<List<RentRequestDto>> getFinishedRents() {
+        try {
+            List<RentRequestDto> rentRequests = this.rentRequestService.getFinishedRents().stream()
+                    .map(rentRequestDtoMapper::toDto).collect(Collectors.toList());
+            return new ResponseEntity<>(rentRequests, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

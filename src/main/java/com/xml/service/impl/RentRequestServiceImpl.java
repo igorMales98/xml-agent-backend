@@ -75,4 +75,9 @@ public class RentRequestServiceImpl implements RentRequestService {
     public RentRequest getOne(Long id) {
         return this.rentRequestRepository.getOne(id);
     }
+
+    @Override
+    public List<RentRequest> getFinishedRents() {
+        return this.rentRequestRepository.getFinishedRents();
+    }
 }
