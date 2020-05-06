@@ -62,6 +62,16 @@ public class AdvertisementController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping(value = "/getAll/{agentId}")
+    public ResponseEntity<List<AdvertisementDto>> getAll(@PathVariable("agentId") Long agentId) {
+        try {
+            List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
+                    .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
+            return new ResponseEntity<>(advertisementDtos, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @GetMapping(value = "/getAdvertisementsPhotos/{id}")
     public ResponseEntity<?> getAdvertisementsPhotos(@PathVariable("id") Long id) {

@@ -89,6 +89,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         advertisement.setAvailableFrom(createAdvertisementDto.getAvailableFrom());
         advertisement.setAvailableTo(createAdvertisementDto.getAvailableTo());
         advertisement.setPricelist(pricelistDtoMapper.toEntity(createAdvertisementDto.getPricelist()));
+        advertisement.setDiscount(createAdvertisementDto.convertToHashMap(createAdvertisementDto.getDiscount()));
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();
@@ -143,5 +144,10 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             allEncodedImages.add(encodeImage);
         }
         return allEncodedImages;
+    }
+
+    @Override
+    public List<Advertisement> getAll(Long agentId) { //TODO: prikazivanje oglasa jednog agenta
+        return advertisementRepository.getAdvertisementByAdvertiser_id(agentId);
     }
 }

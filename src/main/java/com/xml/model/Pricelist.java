@@ -13,6 +13,12 @@ public class Pricelist {
     @Column
     private Float pricePerDay;
 
+    @Column
+    private Float pricePerKm;
+
+    @Column
+    private Float priceForCDW;
+
     @OneToMany(mappedBy = "pricelist")
     private Set<Advertisement> advertisements;
 
@@ -32,7 +38,20 @@ public class Pricelist {
         this.pricePerDay = pricePerDay;
     }
 
+    public Float getPricePerKm() {
+        return pricePerKm;
+    }
 
-// cena za km preko dozvoljnog ako nije unlimited
+    public void setPricePerKm(Float pricePerKm) {
+        this.pricePerKm = pricePerKm;
+    }
+
+    public Float getPriceForCDW() {
+        return priceForCDW;
+    }
+
+    public void setPriceForCDW(Float priceForCDW) {
+        this.priceForCDW = priceForCDW;
+    }
 
 }
