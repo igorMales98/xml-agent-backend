@@ -114,15 +114,11 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     public List<Advertisement> getInPeriod(String dateFrom, String dateTo) {
         dateFrom = dateFrom.replace('T', ' ');
         dateTo = dateTo.replace('T', ' ');
-        System.out.println("datum od" + dateFrom);
-        System.out.println("datum do" + dateTo);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateFromTime = LocalDateTime.parse(dateFrom, formatter);
         LocalDateTime dateFromTo = LocalDateTime.parse(dateTo, formatter);
 
-        System.out.println("datum od" + dateFromTime);
-        System.out.println("datum do" + dateFromTo);
         return this.advertisementRepository.getInPeriod(dateFromTime, dateFromTo);
     }
 
@@ -138,7 +134,6 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         List<String> allEncodedImages = new ArrayList<>();
         String encodeImage = null;
         for (String file : allFiles) {
-            System.out.println(file);
             File image = new File(path + file);
             encodeImage = Base64.getEncoder().withoutPadding().encodeToString(Files.readAllBytes(image.toPath()));
             allEncodedImages.add(encodeImage);
