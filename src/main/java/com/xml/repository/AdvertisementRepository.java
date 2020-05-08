@@ -11,7 +11,13 @@ import java.util.List;
 @Repository
 public interface AdvertisementRepository extends JpaRepository<Advertisement, Long> {
 
-    @Query(value = "SELECT * FROM advertisement a WHERE (:dateFrom BETWEEN a.available_from AND a.available_to) AND (:dateTo BETWEEN a.available_from AND a.available_to)", nativeQuery = true)
+    @Query(value = "SELECT * FROM advertisement a " +
+            "WHERE (:dateFrom BETWEEN a.available_from AND a.available_to) AND (:dateTo BETWEEN a.available_from AND a.available_to)" +
+            "AND a.id NOT IN " +
+            "(SELECT ra.advertisement_id FROM rented_advertisements ra " +
+            "WHERE ra.rent_request_id IN " +
+            "(SELECT rr.id FROM rent_request rr " +
+            "WHERE (:dateFrom BETWEEN rr.reserved_from AND rr.reserved_to) AND (:dateTo BETWEEN rr.reserved_from AND rr.reserved_to) AND rr.status = 'RESERVED' ))", nativeQuery = true)
     List<Advertisement> getInPeriod(LocalDateTime dateFrom, LocalDateTime dateTo);
 
     List<Advertisement> getAdvertisementByAdvertiser_id(Long agentId);

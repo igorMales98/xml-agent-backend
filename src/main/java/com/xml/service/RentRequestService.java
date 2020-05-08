@@ -13,4 +13,7 @@ public interface RentRequestService {
 
     List<RentRequest> getAll();
 
+    RentRequest getOne(Long id);
+
+    List<RentRequest> getFinishedRents();
 }

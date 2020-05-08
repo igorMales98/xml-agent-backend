@@ -1,5 +1,6 @@
 package com.xml.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xml.enummeration.RentRequestStatus;
 import com.xml.model.Advertisement;
 
@@ -14,6 +15,7 @@ public class RentRequestDto {
     private Set<AdvertisementDto> advertisementsForRent;
     private RentRequestStatus rentRequestStatus;
     private UserDto customer;
+    private Set<ReportDto> reports;
 
     public RentRequestDto() {
     }
@@ -64,5 +66,13 @@ public class RentRequestDto {
 
     public void setCustomer(UserDto customer) {
         this.customer = customer;
+    }
+
+    public Set<ReportDto> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<ReportDto> reports) {
+        this.reports = reports;
     }
 }

@@ -1,10 +1,8 @@
 package com.xml.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.xml.model.Advertisement;
-import com.xml.model.RentRequest;
 
-public class ReportDto {
+public class CreateReportDto {
 
     private Long id;
     private CarDto car;
@@ -12,7 +10,7 @@ public class ReportDto {
     private String additionalInformation;
     private RentRequestDto rentRequest;
 
-    public ReportDto() {
+    public CreateReportDto() {
     }
 
     public Long getId() {
@@ -47,7 +45,6 @@ public class ReportDto {
         this.additionalInformation = additionalInformation;
     }
 
-    @JsonIgnore
     public RentRequestDto getRentRequest() {
         return rentRequest;
     }

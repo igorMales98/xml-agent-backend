@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface RentRequestRepository extends JpaRepository<RentRequest, Long> {
-    
+
+    @Query(value = "SELECT * FROM rent_request rr WHERE rr.status = 'PAID'", nativeQuery = true)
+    List<RentRequest> getFinishedRents();
 }
