@@ -81,7 +81,6 @@ INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('1', 'Manual'
 INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('2', 'Automatic');
 INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('3', 'Semi-automatic');
 
-
 /* cars */
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('1', '1000000', '4.7', '2', b'1', b'1', '100000', '7', '1', '1', '1', '1', '1');
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('2', '1000000', '4.5', '0', b'1', b'0', '200000', '2', '2', '8', '5', '2', '3');
@@ -94,7 +93,7 @@ INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `chil
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('9', '2000', '3.9', '3', b'0', b'1', '196000', '4', '8', '8', '24', '2', '3');
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('10', '2000', '4.1', '0', b'1', b'1', '106000', '4', '6', '2', '17', '2', '2');
 
-/* priceslists */
+/* pricelists */
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('1', '100', '10', '3');
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('2', '150', '20', '7');
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('3', '120', '30', '2');
