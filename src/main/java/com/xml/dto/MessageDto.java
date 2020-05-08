@@ -1,30 +1,18 @@
-package com.xml.model;
+package com.xml.dto;
 
-import com.xml.dto.MessageDto;
+import com.xml.model.User;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Entity
-public class Message {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MessageDto {
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "sender_id")
     private User sender;
 
-    @ManyToOne
-    @JoinColumn(name = "receiver_id")
     private User receiver;
 
-    @Column
     private String message;
 
-    @Column
     private LocalDateTime messageDate;
 
     public Long getId() {
