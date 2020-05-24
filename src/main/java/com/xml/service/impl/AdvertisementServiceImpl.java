@@ -112,18 +112,23 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public List<Advertisement> getInPeriod(String dateFrom, String dateTo) {
-        dateFrom = dateFrom.replace('T', ' ');
-        dateTo = dateTo.replace('T', ' ');
-        System.out.println("datum od" + dateFrom);
-        System.out.println("datum do" + dateTo);
+        if (dateFrom.matches("\\A\\d{4}\\-\\d{2}-\\d{2}T\\d{2}:\\d{2}\\z") && dateTo.matches("\\A\\d{4}\\-\\d{2}-\\d{2}T\\d{2}:\\d{2}\\z")) {
+            dateFrom = dateFrom.replace('T', ' ');
+            dateTo = dateTo.replace('T', ' ');
+            System.out.println("datum od" + dateFrom);
+            System.out.println("datum do" + dateTo);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime dateFromTime = LocalDateTime.parse(dateFrom, formatter);
-        LocalDateTime dateFromTo = LocalDateTime.parse(dateTo, formatter);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime dateFromTime = LocalDateTime.parse(dateFrom, formatter);
+            LocalDateTime dateFromTo = LocalDateTime.parse(dateTo, formatter);
 
-        System.out.println("datum od" + dateFromTime);
-        System.out.println("datum do" + dateFromTo);
-        return this.advertisementRepository.getInPeriod(dateFromTime, dateFromTo);
+            System.out.println("datum od" + dateFromTime);
+            System.out.println("datum do" + dateFromTo);
+            return this.advertisementRepository.getInPeriod(dateFromTime, dateFromTo);
+        }
+       else {
+           return null;
+        }
     }
 
     @Override
@@ -147,7 +152,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     }
 
     @Override
-    public List<Advertisement> getAll(Long agentId) { //TODO: prikazivanje oglasa jednog agenta
+    public List<Advertisement> getAll(Long agentId) {
         return advertisementRepository.getAdvertisementByAdvertiser_id(agentId);
     }
 }

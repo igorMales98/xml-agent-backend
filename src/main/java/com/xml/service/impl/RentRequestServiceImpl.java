@@ -50,24 +50,30 @@ public class RentRequestServiceImpl implements RentRequestService {
         customer.setAddress(rentRequestDto.getCustomer().getAddress());
         customer.setPhone(rentRequestDto.getCustomer().getPhone());
 
-        customer.setUsername("notInUseasdf");
-        customer.setPassword("notInUseasdf");
-        this.userService.saveUser(customer);
+        if (customer.getFirstName().matches("[a-zA-Z]+") && customer.getLastName().matches("[a-zA-Z]+") &&
+                customer.getAddress().matches("[a-zA-Z0-9]+") && customer.getCity().matches("[a-zA-Z]+") &&
+                customer.getCountry().matches("[a-zA-Z]+") && customer.getPhone().matches("[0-9]+") &&
+                customer.getEmail().matches("[a-zA-Z0-9.']+@(gmail.com)|(yahoo.com)|(uns.ac.rs)")) {
 
-        Set<Advertisement> advertisementSet = new HashSet<>();
-        AdvertisementDtoMapper advertisementDtoMapper1 = advertisementDtoMapper;
-        for (AdvertisementDto advertisementDto : rentRequestDto.getAdvertisementsForRent()) {
-            Advertisement advertisement = advertisementDtoMapper1.toEntity(advertisementDto);
-            advertisementSet.add(advertisement);
+            customer.setUsername("notInUseasdf");
+            customer.setPassword("notInUseasdf");
+            this.userService.saveUser(customer);
+
+            Set<Advertisement> advertisementSet = new HashSet<>();
+            AdvertisementDtoMapper advertisementDtoMapper1 = advertisementDtoMapper;
+            for (AdvertisementDto advertisementDto : rentRequestDto.getAdvertisementsForRent()) {
+                Advertisement advertisement = advertisementDtoMapper1.toEntity(advertisementDto);
+                advertisementSet.add(advertisement);
+            }
+
+            RentRequest newRentRequest = new RentRequest();
+            newRentRequest.setReservedFrom(rentRequestDto.getReservedFrom());
+            newRentRequest.setReservedTo(rentRequestDto.getReservedTo());
+            newRentRequest.setCustomer(customer);
+            newRentRequest.setRentRequestStatus(RentRequestStatus.RESERVED);
+            newRentRequest.setAdvertisementsForRent(advertisementSet);
+
+            this.rentRequestRepository.save(newRentRequest);
         }
-
-        RentRequest newRentRequest = new RentRequest();
-        newRentRequest.setReservedFrom(rentRequestDto.getReservedFrom());
-        newRentRequest.setReservedTo(rentRequestDto.getReservedTo());
-        newRentRequest.setCustomer(customer);
-        newRentRequest.setRentRequestStatus(RentRequestStatus.RESERVED);
-        newRentRequest.setAdvertisementsForRent(advertisementSet);
-
-        this.rentRequestRepository.save(newRentRequest);
     }
 }
