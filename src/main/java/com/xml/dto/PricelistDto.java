@@ -1,11 +1,27 @@
 package com.xml.dto;
 
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class PricelistDto {
 
     private Long id;
+
+    @NotNull(message = "Price per day cannot be empty")
+    @Min(value = 1)
+    @Max(value = 999999)
     private Float pricePerDay;
+
+    @NotNull(message = "Price per km cannot be empty")
+    @Min(value = 1)
+    @Max(value = 999999)
     private Float pricePerKm;
+
+    @NotNull(message = "Price for cdw cannot be empty")
+    @Min(value = 1)
+    @Max(value = 999999)
     private Float priceForCDW;
 
     public PricelistDto() {

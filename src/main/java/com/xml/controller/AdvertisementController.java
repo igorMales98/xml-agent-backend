@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class AdvertisementController {
     private AdvertisementDtoMapper advertisementDtoMapper;
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Long> createAdvertisement(@RequestBody CreateAdvertisementDto createAdvertisementDto) {
+    public ResponseEntity<Long> createAdvertisement(@Valid @RequestBody CreateAdvertisementDto createAdvertisementDto) {
         System.out.println(createAdvertisementDto);
         try {
             Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto);

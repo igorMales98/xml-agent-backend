@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +38,7 @@ public class PricelistController {
     }
 
     @PostMapping(value = "/addPricelist")
-    public ResponseEntity<?> addPricelist(@RequestBody PricelistDto pricelistDto) {
+    public ResponseEntity<?> addPricelist(@Valid @RequestBody PricelistDto pricelistDto) {
         System.out.println("Stampa: " + pricelistDto.getPricePerDay());
         try {
             this.pricelistService.savePricelist(pricelistDto);
@@ -60,7 +61,7 @@ public class PricelistController {
     }
 
     @PutMapping(value = "/editPricelist")
-    public ResponseEntity<?> editPrice(@RequestBody PricelistDto pricelistDto){
+    public ResponseEntity<?> editPrice(@Valid @RequestBody PricelistDto pricelistDto){
         try {
             this.pricelistService.editPrice(pricelistDto);
             return new ResponseEntity<>(HttpStatus.OK);

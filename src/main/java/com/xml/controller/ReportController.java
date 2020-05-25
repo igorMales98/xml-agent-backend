@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/api/report", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -20,7 +22,7 @@ public class ReportController {
     private ReportService reportService;
 
     @PostMapping(value = "")
-    public ResponseEntity<?> createReport(@RequestBody CreateReportDto reportDto) {
+    public ResponseEntity<?> createReport(@Valid @RequestBody CreateReportDto reportDto) {
         try {
             this.reportService.createReport(reportDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
