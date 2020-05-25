@@ -1,20 +1,29 @@
 package com.xml.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xml.enummeration.RentRequestStatus;
-import com.xml.model.Advertisement;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 public class RentRequestDto {
 
     private Long id;
+
+    @NotNull(message = "Date reserved from cannot be empty")
     private LocalDateTime reservedFrom;
+
+    @NotNull(message = "Date reserved to cannot be empty")
     private LocalDateTime reservedTo;
+
+    @NotNull
     private Set<AdvertisementDto> advertisementsForRent;
+
     private RentRequestStatus rentRequestStatus;
+
+    @NotNull
     private UserDto customer;
+
     private Set<ReportDto> reports;
 
     public RentRequestDto() {

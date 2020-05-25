@@ -2,17 +2,23 @@ package com.xml.dto;
 
 import com.xml.model.User;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class MessageDto {
+
     private Long id;
 
     private User sender;
 
+    @NotNull
     private User receiver;
 
+    @NotBlank(message = "Message cannot be empty")
     private String message;
 
+    @NotNull
     private LocalDateTime messageDate;
 
     public Long getId() {
