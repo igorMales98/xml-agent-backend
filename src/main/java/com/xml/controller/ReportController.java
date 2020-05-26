@@ -5,6 +5,7 @@ import com.xml.dto.RentRequestDto;
 import com.xml.dto.ReportDto;
 import com.xml.service.RentRequestService;
 import com.xml.service.ReportService;
+import org.owasp.encoder.Encode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.PrintWriter;
 
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
@@ -36,6 +38,8 @@ public class ReportController {
     public ResponseEntity<Float> getRentMileage(@PathVariable("id") Long carId) {
         try {
             float mileage = this.reportService.getRentMileage(carId);
+            String miString = Float.toString(mileage);
+            Encode.forHtml(miString);
             return new ResponseEntity<>(mileage, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

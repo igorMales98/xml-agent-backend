@@ -13,7 +13,9 @@ import com.xml.service.CarService;
 import com.xml.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.owasp.encoder.Encode;
 
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.List;
 
