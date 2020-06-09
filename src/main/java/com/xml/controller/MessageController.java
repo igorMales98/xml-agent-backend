@@ -38,7 +38,7 @@ public class MessageController
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    @GetMapping(value = "/getMessages/{agentId}/{customerId}")
+    @GetMapping(value = "/{agentId}/{customerId}")
     public ResponseEntity<?> getMessages(@PathVariable("agentId") Long agentId,@PathVariable("customerId") Long customerId) {
         try {
             List<MessageDto> messageDtos = this.messageService.getMessages(agentId,customerId).stream()
@@ -50,7 +50,7 @@ public class MessageController
         }
     }
 
-    @PostMapping(value = "/sendMessage")
+    @PostMapping(value = "")
     public ResponseEntity<?> sendMessage(@RequestBody MessageDto messageDto) {
         try {
             //TODO: sender-senderId

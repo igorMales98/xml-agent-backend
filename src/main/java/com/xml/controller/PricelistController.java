@@ -26,7 +26,7 @@ public class PricelistController {
     @Autowired
     private PricelistDtoMapper pricelistDtoMapper;
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<PricelistDto>> getAll() {
         try {
             List<PricelistDto> pricelistDtos = this.pricelistService.getAll().stream()
@@ -37,7 +37,7 @@ public class PricelistController {
         }
     }
 
-    @PostMapping(value = "/addPricelist")
+    @PostMapping(value = "")
     public ResponseEntity<?> addPricelist(@Valid @RequestBody PricelistDto pricelistDto) {
         System.out.println("Stampa: " + pricelistDto.getPricePerDay());
         try {
@@ -49,7 +49,7 @@ public class PricelistController {
         }
     }
 
-    @DeleteMapping(value = "/deletePricelist/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletePrice(@PathVariable Long id) throws ParseException {
 
         try {
@@ -60,7 +60,7 @@ public class PricelistController {
         }
     }
 
-    @PutMapping(value = "/editPricelist")
+    @PutMapping(value = "")
     public ResponseEntity<?> editPrice(@Valid @RequestBody PricelistDto pricelistDto){
         try {
             this.pricelistService.editPrice(pricelistDto);

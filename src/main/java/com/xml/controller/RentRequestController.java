@@ -36,7 +36,7 @@ public class RentRequestController {
         }
     }
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<RentRequestDto>> getAll() {
 
         try {

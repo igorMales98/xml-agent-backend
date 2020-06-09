@@ -27,7 +27,7 @@ public class AdvertisementController {
     @Autowired
     private AdvertisementDtoMapper advertisementDtoMapper;
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "")
     public ResponseEntity<Long> createAdvertisement(@Valid @RequestBody CreateAdvertisementDto createAdvertisementDto) {
         System.out.println(createAdvertisementDto);
         try {
@@ -63,7 +63,7 @@ public class AdvertisementController {
         }
     }
 
-    @GetMapping(value = "/getAll/{agentId}")
+    @GetMapping(value = "/{agentId}")
     public ResponseEntity<List<AdvertisementDto>> getAll(@PathVariable("agentId") Long agentId) {
         try {
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
@@ -74,7 +74,7 @@ public class AdvertisementController {
         }
     }
 
-    @GetMapping(value = "/getAdvertisementsPhotos/{id}")
+    @GetMapping(value = "/photos/{id}")
     public ResponseEntity<?> getAdvertisementsPhotos(@PathVariable("id") Long id) {
         try {
             List<String> allEncodedImages = this.advertisementService.getAdvertisementPhotos(id);

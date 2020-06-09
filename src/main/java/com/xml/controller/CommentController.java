@@ -24,7 +24,7 @@ public class CommentController {
     @Autowired
     private CommentDtoMapper commentDtoMapper;
 
-    @GetMapping(value = "/getAll/{adId}")
+    @GetMapping(value = "/{adId}")
     public ResponseEntity<?> getAll(@PathVariable("adId") Long adId) {
         try {
             List<CommentDto> commentDtos = this.commentService.getAll(adId).stream()
@@ -36,7 +36,7 @@ public class CommentController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    @PostMapping(value = "/sendReply")
+    @PostMapping(value = "/reply")
     public ResponseEntity<?> sendReply(@Valid @RequestBody CommentDto commentDto) {
         try {
 

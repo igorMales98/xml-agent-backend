@@ -24,7 +24,7 @@ public class CarClassController {
     @Autowired
     private CarClassDtoMapper carClassDtoMapper;
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<CarClassDto>> getBrandModels() {
         try {
             List<CarClassDto> carClassDtos = this.carClassService.getAll().stream()
