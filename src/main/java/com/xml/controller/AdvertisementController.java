@@ -68,13 +68,16 @@ public class AdvertisementController {
         try {
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
                     .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
+            for (AdvertisementDto advertisementDto : advertisementDtos) {
+                advertisementDto.setImg(this.advertisementService.getAdvertisementPhotos(advertisementDto.getId()));
+            }
             return new ResponseEntity<>(advertisementDtos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @GetMapping(value = "/photos/{id}")
+    /*@GetMapping(value = "/photos/{id}")
     public ResponseEntity<?> getAdvertisementsPhotos(@PathVariable("id") Long id) {
         try {
             List<String> allEncodedImages = this.advertisementService.getAdvertisementPhotos(id);
@@ -83,7 +86,7 @@ public class AdvertisementController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
     @GetMapping(value = "/getTimesRented/{id}")
     public ResponseEntity<Integer> getTimesRented(@PathVariable("id") Long id) {
