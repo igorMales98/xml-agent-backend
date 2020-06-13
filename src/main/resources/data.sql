@@ -9,77 +9,77 @@ INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `em
 INSERT INTO `xml-agent`.`users` (`type`, `id`, `address`, `city`, `country`, `email`, `enabled`, `password`, `phone`, `username`, `first_name`, `last_name`,`advertisements_posted`) VALUES ('CUSTOMER', '8', 'Ravnoseoska', 'Ravno Selo', 'Serbia', 'shum@gmail.com', b'1', '$2a$10$1hoVKaxcWC6/T/.NSGcOm.F7E8vT2xbuJfFuIWEl4hexg28P09CJm', '063555333', 'shumy', 'Sumar', 'Stefan','0');
 
 /* brands */
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('1', 'Volvo');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('2', 'Saab');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('3', 'Mercedes Benz');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('4', 'BMW');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('5', 'Audi');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('6', 'Opel');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('7', 'Peugeot');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('8', 'Renault');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('9', 'Ford');
-INSERT INTO `xml-agent`.`car_brand` (`id`, `name`) VALUES ('10', 'Hyundai');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('1', 'Volvo', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('2', 'Saab', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('3', 'Mercedes Benz', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('4', 'BMW', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('5', 'Audi', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('6', 'Opel', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('7', 'Peugeot', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('8', 'Renault', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('9', 'Ford', b'1');
+INSERT INTO `xml-agent`.`car_brand` (`id`, `name`, `enabled`) VALUES ('10', 'Hyundai', b'1');
 
 /* models */
 /* volvo */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('1', 'S60', '1');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('2', 'S80', '1');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('3', 'V70', '1');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('4', 'XC90', '1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('1', 'S60', '1', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('2', 'S80', '1', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('3', 'V70', '1', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('4', 'XC90', '1', b'1');
 /* saab */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('5', '9-5', '2');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('6', '9-3', '2');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('5', '9-5', '2', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('6', '9-3', '2', b'1');
 /* mercedes */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('7', 'A-Class', '3');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('8', 'S-Class', '3');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('9', 'ML-Class', '3');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('10', '124', '3');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('7', 'A-Class', '3', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('8', 'S-Class', '3', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('9', 'ML-Class', '3', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('10', '124', '3', b'1');
 /* bmw */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('11', '520', '4');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('12', 'M3', '4');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('13', 'X7', '4');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('11', '520', '4', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('12', 'M3', '4', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('13', 'X7', '4', b'1');
 /*audi */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('14', 'A4', '5');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('15', 'A6', '5');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('16', 'A8', '5');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('14', 'A4', '5', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('15', 'A6', '5', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('16', 'A8', '5', b'1');
 /* opel */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('17', 'Astra', '6');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('18', 'Corsa', '6');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('19', 'Vectra', '6');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('17', 'Astra', '6', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('18', 'Corsa', '6', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('19', 'Vectra', '6', b'1');
 /* peugeot */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('20', '307', '7');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('21', '407', '7');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('22', '5008', '7');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('20', '307', '7', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('21', '407', '7', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('22', '5008', '7', b'1');
 /* renault */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('23', 'Clio', '8');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('24', 'Megane', '8');
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('25', 'Laguna', '8');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('23', 'Clio', '8', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('24', 'Megane', '8', b'1');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('25', 'Laguna', '8', b'1');
 /* ford */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('26', 'Focus', '9');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('26', 'Focus', '9', b'1');
 /* hyundai */
-INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`) VALUES ('27', 'Tucson', '10');
+INSERT INTO `xml-agent`.`car_model` (`id`, `name`, `car_brand_id`, `enabled`) VALUES ('27', 'Tucson', '10', b'1');
 
 /* classes */
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('1', 'Sedan');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('2', 'Hatchback');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('3', 'Roadster');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('4', 'Minivan');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('5', 'SUV');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('6', 'Pickup');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('7', 'Cabriolet');
-INSERT INTO `xml-agent`.`car_class` (`id`, `name`) VALUES ('8', 'Caravan');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('1', 'Sedan', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('2', 'Hatchback', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('3', 'Roadster', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('4', 'Minivan', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('5', 'SUV', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('6', 'Pickup', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('7', 'Cabriolet', b'1');
+INSERT INTO `xml-agent`.`car_class` (`id`, `name`, `enabled`) VALUES ('8', 'Caravan', b'1');
 
 /* fuel types */
-INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('1', 'Petrol');
-INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('2', 'Diesel');
-INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('3', 'Petrol + Gas');
-INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('4', 'Electric');
-INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`) VALUES ('5', 'Hybrid');
+INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`, `enabled`) VALUES ('1', 'Petrol', b'1');
+INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`, `enabled`) VALUES ('2', 'Diesel', b'1');
+INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`, `enabled`) VALUES ('3', 'Petrol + Gas', b'1');
+INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`, `enabled`) VALUES ('4', 'Electric', b'1');
+INSERT INTO `xml-agent`.`fuel_type` (`id`, `name`, `enabled`) VALUES ('5', 'Hybrid', b'1');
 
 /* transmission types */
-INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('1', 'Manual');
-INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('2', 'Automatic');
-INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`) VALUES ('3', 'Semi-automatic');
+INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`, `enabled`) VALUES ('1', 'Manual', b'1');
+INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`, `enabled`) VALUES ('2', 'Automatic', b'1');
+INSERT INTO `xml-agent`.`transmission_type` (`id`, `name`, `enabled`) VALUES ('3', 'Semi-automatic', b'1');
 
 /* cars */
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('1', '1000000', '4.7', '2', b'1', b'1', '100000', '7', '1', '1', '1', '1', '1');
@@ -94,13 +94,13 @@ INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `chil
 INSERT INTO `xml-agent`.`car` (`id`, `allowed_distance`, `average_rating`, `child_seats`, `collision_damage_waiver_exists`, `has_android`, `mileage`, `times_rated`, `car_brand_id`, `car_class_id`, `car_model_id`, `fuel_type_id`, `transmission_type_id`) VALUES ('10', '2000', '4.1', '0', b'1', b'1', '106000', '4', '6', '2', '17', '2', '2');
 
 /* pricelists */
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('1', '100', '10', '3');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('2', '150', '20', '7');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('3', '120', '30', '2');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('4', '80', '15', '1');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('5', '300', '17', '10');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('6', '250', '12', '7');
-INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`) VALUES ('7', '50', '11', '1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('1', '100', '10', '3', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('2', '150', '20', '7', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('3', '120', '30', '2', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('4', '80', '15', '1', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('5', '300', '17', '10', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('6', '250', '12', '7', b'1');
+INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('7', '50', '11', '1', b'1');
 
 /* advertisements */
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('1', '2020-05-01 22:00:00.000000', '2020-05-20 22:00:00.000000', '1', '1', '1');

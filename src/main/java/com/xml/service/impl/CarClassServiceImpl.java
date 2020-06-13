@@ -6,6 +6,7 @@ import com.xml.service.CarClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +17,16 @@ public class CarClassServiceImpl implements CarClassService {
 
     @Override
     public List<CarClass> getAll() {
-        return this.carClassRepository.findAll();
+        return this.enabledClasses(this.carClassRepository.findAll());
+    }
+
+    private List<CarClass> enabledClasses(List<CarClass> carClasses) {
+        List<CarClass> temp = new ArrayList<>();
+        for (CarClass carClass : carClasses) {
+            if (carClass.isEnabled()) {
+                temp.add(carClass);
+            }
+        }
+        return temp;
     }
 }

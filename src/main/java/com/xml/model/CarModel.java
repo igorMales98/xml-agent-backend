@@ -23,6 +23,9 @@ public class CarModel {
     @OneToMany(mappedBy = "carModel")
     private Set<Car> cars;
 
+    @Column(name = "enabled")
+    private boolean enabled = true;
+
     public Long getId() {
         return id;
     }
@@ -45,5 +48,13 @@ public class CarModel {
 
     public void setCarBrand(CarBrand carBrand) {
         this.carBrand = carBrand;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
