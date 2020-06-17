@@ -134,7 +134,7 @@ INSERT INTO `xml-agent`.`advertisement_discount` (`advertisement_id`, `discount`
 
 /* comments */
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('1', b'1', 'Volvo je masinerija.', 'Kao tenk.', '1', '2');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'1', 'Auto je bas lep. Ide ovaj volvo', 'Jeste slazem se', '1', '5');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'1', 'Auto je bas lep. Ide ovaj volvo', null, '1', '5');
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('3', b'1', 'Al je udoban.', 'Kao u duseku.', '1', '3');
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('4', b'1', 'Auto je bas lep', 'Jeste slazem se', '2', '7');
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('5', b'1', 'Auto je bas lep', 'Jeste slazem se', '3', '8');

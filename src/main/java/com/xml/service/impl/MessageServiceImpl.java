@@ -52,6 +52,18 @@ public class MessageServiceImpl implements MessageService {
             }
         }
         System.out.println(users.size());
+        for (Message message : this.messageRepository.findAll()) {
+            if (message.getSender().getId().equals(agentId)) {
+                if (!users.contains(message.getReceiver())) {
+                    users.add(message.getReceiver());
+                }
+            }
+            if (message.getReceiver().getId().equals(agentId)) {
+                if (!users.contains(message.getSender())) {
+                    users.add(message.getSender());
+                }
+            }
+        }
         return users;
     }
 
