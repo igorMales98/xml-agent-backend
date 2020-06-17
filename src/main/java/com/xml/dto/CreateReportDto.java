@@ -1,13 +1,22 @@
 package com.xml.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CreateReportDto {
 
     private Long id;
+
+    @NotNull(message = "Car cannot be null")
     private CarDto car;
+
+    @NotNull(message = "kilometres cannot be empty")
     private float km;
+
+    @NotBlank(message = "Additional information cannot be empty")
     private String additionalInformation;
+
+    @NotNull
     private RentRequestDto rentRequest;
 
     public CreateReportDto() {

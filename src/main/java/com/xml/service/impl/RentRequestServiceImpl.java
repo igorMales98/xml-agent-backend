@@ -11,8 +11,11 @@ import com.xml.repository.RentRequestRepository;
 import com.xml.service.RentRequestService;
 import com.xml.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
@@ -29,6 +32,8 @@ public class RentRequestServiceImpl implements RentRequestService {
 
     @Autowired
     private AdvertisementDtoMapper advertisementDtoMapper;
+
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public List<RentRequest> getAll() {
@@ -48,37 +53,47 @@ public class RentRequestServiceImpl implements RentRequestService {
         customer.setAddress(rentRequestDto.getCustomer().getAddress());
         customer.setPhone(rentRequestDto.getCustomer().getPhone());
 
-        customer.setUsername("notInUseasdf");
-        customer.setPassword("notInUseasdf");
-        this.userService.saveUser(customer);
+        if (customer.getFirstName().matches("[a-zA-Z]+") && customer.getLastName().matches("[a-zA-Z]+") &&
+                customer.getAddress().matches("[a-zA-Z0-9]+") && customer.getCity().matches("[a-zA-Z]+") &&
+                customer.getCountry().matches("[a-zA-Z]+") && customer.getPhone().matches("[0-9]+") &&
+                customer.getEmail().matches("[a-zA-Z0-9.']+@(gmail.com)|(yahoo.com)|(uns.ac.rs)")) {
 
-        Set<Advertisement> advertisementSet = new HashSet<>();
-        for (AdvertisementDto advertisementDto : rentRequestDto.getAdvertisementsForRent()) {
-            Advertisement advertisement = advertisementDtoMapper.toEntity(advertisementDto);
-            advertisementSet.add(advertisement);
-        }
+            SecureRandom sri = new SecureRandom();
+            String sni = Long.toString(Math.abs(sri.nextLong()));
+            customer.setUsername("PhysicalUser" + sni);
+            customer.setPassword(passwordEncoder.encode(sni));
+            this.userService.saveUser(customer);
 
-        RentRequest newRentRequest = new RentRequest();
-        newRentRequest.setReservedFrom(rentRequestDto.getReservedFrom());
-        newRentRequest.setReservedTo(rentRequestDto.getReservedTo());
-        newRentRequest.setCustomer(customer);
-        newRentRequest.setRentRequestStatus(RentRequestStatus.RESERVED);
-        newRentRequest.setAdvertisementsForRent(advertisementSet);
+            Set<Advertisement> advertisementSet = new HashSet<>();
+            for (AdvertisementDto advertisementDto : rentRequestDto.getAdvertisementsForRent()) {
+                Advertisement advertisement = advertisementDtoMapper.toEntity(advertisementDto);
+                advertisementSet.add(advertisement);
+            }
 
-        List<RentRequest> rentRequests = this.rentRequestRepository.findAll();
-        for (RentRequest request : rentRequests) {
-            if (request.getRentRequestStatus().equals(RentRequestStatus.PENDING)) {
-                for (Advertisement advertisement : request.getAdvertisementsForRent()) {
-                    for (Advertisement a : advertisementSet) {
-                        if (a.getId().equals(advertisement.getId())) {
-                            request.setRentRequestStatus(RentRequestStatus.CANCELED);
-                            this.rentRequestRepository.save(request);
+            RentRequest newRentRequest = new RentRequest();
+            newRentRequest.setReservedFrom(rentRequestDto.getReservedFrom());
+            newRentRequest.setReservedTo(rentRequestDto.getReservedTo());
+            newRentRequest.setCustomer(customer);
+            newRentRequest.setRentRequestStatus(RentRequestStatus.RESERVED);
+            newRentRequest.setAdvertisementsForRent(advertisementSet);
+
+            List<RentRequest> rentRequests = this.rentRequestRepository.findAll();
+            for (RentRequest request : rentRequests) {
+                if (request.getRentRequestStatus().equals(RentRequestStatus.PENDING)) {
+                    for (Advertisement advertisement : request.getAdvertisementsForRent()) {
+                        for (Advertisement a : advertisementSet) {
+                            if (a.getId().equals(advertisement.getId())) {
+                                request.setRentRequestStatus(RentRequestStatus.CANCELED);
+                                this.rentRequestRepository.save(request);
+                            }
                         }
                     }
                 }
             }
+            this.rentRequestRepository.save(newRentRequest);
+        } else {
+            System.out.println("Customer data is invalid.");
         }
-        this.rentRequestRepository.save(newRentRequest);
     }
 
     @Override

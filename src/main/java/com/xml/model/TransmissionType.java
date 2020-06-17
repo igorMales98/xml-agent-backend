@@ -19,6 +19,9 @@ public class TransmissionType {
     @OneToMany(mappedBy = "transmissionType")
     private Set<Car> cars;
 
+    @Column(name = "enabled")
+    private boolean enabled = true;
+
     public Long getId() {
         return id;
     }
@@ -41,5 +44,13 @@ public class TransmissionType {
 
     public void setCars(Set<Car> cars) {
         this.cars = cars;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

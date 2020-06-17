@@ -27,7 +27,7 @@ public class CarBrandController {
     @Autowired
     private CarBrandDtoMapper carBrandDtoMapper;
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<CarBrandDto>> getAll() {
 
         try {

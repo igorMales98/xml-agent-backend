@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class RentRequestController {
     private RentRequestDtoMapper rentRequestDtoMapper;
 
     @PostMapping(value = "")
-    public ResponseEntity<?> createRentRequest(@RequestBody RentRequestDto rentRequestDto) {
+    public ResponseEntity<?> createRentRequest(@Valid @RequestBody RentRequestDto rentRequestDto) {
         try {
             this.rentRequestService.createRentRequest(rentRequestDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -35,7 +36,7 @@ public class RentRequestController {
         }
     }
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<RentRequestDto>> getAll() {
 
         try {

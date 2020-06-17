@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class CommentController {
     @Autowired
     private CommentDtoMapper commentDtoMapper;
 
-    @GetMapping(value = "/getAll/{adId}")
+    @GetMapping(value = "/{adId}")
     public ResponseEntity<?> getAll(@PathVariable("adId") Long adId) {
         try {
             List<CommentDto> commentDtos = this.commentService.getAll(adId).stream()
@@ -35,8 +36,8 @@ public class CommentController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    @PostMapping(value = "/sendReply")
-    public ResponseEntity<?> sendReply(@RequestBody CommentDto commentDto) {
+    @PostMapping(value = "/reply")
+    public ResponseEntity<?> sendReply(@Valid @RequestBody CommentDto commentDto) {
         try {
 
             this.commentService.sendReply(commentDto.getId(),commentDto.getReply());

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +27,8 @@ public class AdvertisementController {
     @Autowired
     private AdvertisementDtoMapper advertisementDtoMapper;
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Long> createAdvertisement(@RequestBody CreateAdvertisementDto createAdvertisementDto) {
+    @PostMapping(value = "")
+    public ResponseEntity<Long> createAdvertisement(@Valid @RequestBody CreateAdvertisementDto createAdvertisementDto) {
         System.out.println(createAdvertisementDto);
         try {
             Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto);
@@ -62,18 +63,21 @@ public class AdvertisementController {
         }
     }
 
-    @GetMapping(value = "/getAll/{agentId}")
+    @GetMapping(value = "/{agentId}")
     public ResponseEntity<List<AdvertisementDto>> getAll(@PathVariable("agentId") Long agentId) {
         try {
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
                     .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
+            for (AdvertisementDto advertisementDto : advertisementDtos) {
+                advertisementDto.setImg(this.advertisementService.getAdvertisementPhotos(advertisementDto.getId()));
+            }
             return new ResponseEntity<>(advertisementDtos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @GetMapping(value = "/getAdvertisementsPhotos/{id}")
+    /*@GetMapping(value = "/photos/{id}")
     public ResponseEntity<?> getAdvertisementsPhotos(@PathVariable("id") Long id) {
         try {
             List<String> allEncodedImages = this.advertisementService.getAdvertisementPhotos(id);
@@ -82,7 +86,7 @@ public class AdvertisementController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
     @GetMapping(value = "/getTimesRented/{id}")
     public ResponseEntity<Integer> getTimesRented(@PathVariable("id") Long id) {

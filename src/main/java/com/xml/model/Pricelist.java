@@ -19,6 +19,9 @@ public class Pricelist {
     @Column
     private Float priceForCDW;
 
+    @Column(name = "enabled")
+    private boolean enabled = true;
+
     @OneToMany(mappedBy = "pricelist")
     private Set<Advertisement> advertisements;
 
@@ -54,4 +57,19 @@ public class Pricelist {
         this.priceForCDW = priceForCDW;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Advertisement> getAdvertisements() {
+        return advertisements;
+    }
+
+    public void setAdvertisements(Set<Advertisement> advertisements) {
+        this.advertisements = advertisements;
+    }
 }

@@ -2,6 +2,7 @@ package com.xml.service.impl;
 
 import com.xml.dto.PricelistDto;
 import com.xml.mapper.PricelistDtoMapper;
+import com.xml.model.Advertisement;
 import com.xml.model.Pricelist;
 import com.xml.repository.PricelistRepository;
 import com.xml.service.PricelistService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,20 +24,17 @@ public class PricelistServiceImpl implements PricelistService {
 
     @Override
     public List<Pricelist> getAll() {
-        return this.pricelistRepository.findAll();
+        return this.enabledPricelists(this.pricelistRepository.findAll());
     }
 
     @Override
     public void savePricelist(PricelistDto pricelistDto) {
         Pricelist newPricelist = new Pricelist();
 
-        try{
-            newPricelist.setPricePerDay(pricelistDto.getPricePerDay());
-            newPricelist.setPricePerKm(pricelistDto.getPricePerKm());
-            newPricelist.setPriceForCDW(pricelistDto.getPriceForCDW());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        newPricelist.setPricePerDay(pricelistDto.getPricePerDay());
+        newPricelist.setPricePerKm(pricelistDto.getPricePerKm());
+        newPricelist.setPriceForCDW(pricelistDto.getPriceForCDW());
+        newPricelist.setEnabled(true);
 
         this.pricelistRepository.save(newPricelist);
     }
@@ -43,26 +42,31 @@ public class PricelistServiceImpl implements PricelistService {
     @Override
     public void deletePrice(Long id) {
 
-        Pricelist pricelistForDelete = this.pricelistRepository.findOneById(id);
-        try {
-            this.pricelistRepository.delete(pricelistForDelete);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Pricelist pricelistForDelete = this.pricelistRepository.getOne(id);
+        pricelistForDelete.setEnabled(false);
+        this.pricelistRepository.save(pricelistForDelete);
+
     }
 
     @Override
     public void editPrice(PricelistDto pricelistDto) {
 
-        Pricelist pricelistToEdit = this.pricelistRepository.findOneById(pricelistDto.getId());
-        try{
-            pricelistToEdit.setPricePerDay(pricelistDto.getPricePerDay());
-            pricelistToEdit.setPricePerKm(pricelistDto.getPricePerKm());
-            pricelistToEdit.setPriceForCDW(pricelistDto.getPriceForCDW());
-            this.pricelistRepository.save(pricelistToEdit);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Pricelist pricelistToEdit = this.pricelistRepository.getOne(pricelistDto.getId());
+        pricelistToEdit.setPricePerDay(pricelistDto.getPricePerDay());
+        pricelistToEdit.setPricePerKm(pricelistDto.getPricePerKm());
+        pricelistToEdit.setPriceForCDW(pricelistDto.getPriceForCDW());
+        this.pricelistRepository.save(pricelistToEdit);
+
+    }
+
+    private List<Pricelist> enabledPricelists(List<Pricelist> pricelists) {
+        List<Pricelist> temp = new ArrayList<>();
+        for (Pricelist pricelist : pricelists) {
+            if (pricelist.isEnabled()) {
+                temp.add(pricelist);
+            }
         }
+        return temp;
     }
 
 }

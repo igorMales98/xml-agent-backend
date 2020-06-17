@@ -1,8 +1,10 @@
 package com.xml.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.owasp.encoder.Encode;
 
 import javax.persistence.*;
+import java.io.PrintWriter;
 import java.util.Set;
 
 @Entity
@@ -60,10 +62,12 @@ public class Report {
     }
 
     public String getAdditionalInformation() {
+
         return additionalInformation;
     }
 
     public void setAdditionalInformation(String additionalInformation) {
+        Encode.forHtml(additionalInformation);
         this.additionalInformation = additionalInformation;
     }
 

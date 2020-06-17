@@ -6,6 +6,7 @@ import com.xml.service.FuelTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +17,16 @@ public class FuelTypeServiceImpl implements FuelTypeService {
 
     @Override
     public List<FuelType> getAll() {
-        return this.fuelTypeRepository.findAll();
+        return this.enabledFuelTypes(this.fuelTypeRepository.findAll());
+    }
+
+    private List<FuelType> enabledFuelTypes(List<FuelType> fuelTypes) {
+        List<FuelType> temp = new ArrayList<>();
+        for (FuelType fuelType : fuelTypes) {
+            if (fuelType.isEnabled()) {
+                temp.add(fuelType);
+            }
+        }
+        return temp;
     }
 }

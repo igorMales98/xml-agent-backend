@@ -1,15 +1,19 @@
 package com.xml.dto;
 
-import com.xml.model.Advertisement;
 import com.xml.model.User;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 public class CommentDto {
 
     private Long id;
 
+    @NotNull(message = "Commenter cannot be null")
     private User commenter;
 
+    @NotBlank(message = "Comment cannot be empty")
     private String comment;
 
     private String reply;

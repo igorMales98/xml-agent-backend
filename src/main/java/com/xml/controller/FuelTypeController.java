@@ -26,7 +26,7 @@ public class FuelTypeController {
     @Autowired
     private FuelTypeDtoMapper fuelTypeDtoMapper;
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<FuelTypeDto>> getAll() {
         try {
             List<FuelTypeDto> fuelTypeDtos = this.fuelTypeService.getAll().stream()

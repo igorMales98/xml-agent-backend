@@ -1,24 +1,56 @@
 package com.xml.dto;
 
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CreateAdvertisementDto {
 
+    @NotNull(message = "Car brand cannot be null")
     private CarBrandDto carBrand;
+
+    @NotNull(message = "Car model cannot be null")
     private CarModelDto carModel;
+
+    @NotNull(message = "Car class cannot be null")
     private CarClassDto carClass;
+
+    @NotNull(message = "Fuel type cannot be null")
     private FuelTypeDto fuelType;
+
+    @NotNull(message = "Transmission type cannot be null")
     private TransmissionTypeDto transmissionType;
+
+    @NotNull(message = "Pricelist cannot be null")
     private PricelistDto pricelist;
+
+    @NotNull
+    @FutureOrPresent(message = "Date cannot be in past")
     private LocalDateTime availableFrom;
+
+    @NotNull
+    @FutureOrPresent(message = "Date cannot be in past")
     private LocalDateTime availableTo;
+
+    @PositiveOrZero(message = "Mileage cannot be negative")
+    @Max(value = 1000000000)
+    @NotNull(message = "Mileage cannot be empty")
     private float mileage;
+
+    @NotNull(message = "Child seats cannot be empty")
+    @Min(value = 0)
+    @Max(value = 5)
     private int childSeats;
+
+    @NotNull
     private boolean hasACDW;
+
+    @NotNull(message = "Mileage cannot be empty")
+    @Min(value = 0)
+    @Max(value = 1000000)
     private float allowedDistance;
+
     private String discount;
 
     public CreateAdvertisementDto() {

@@ -27,7 +27,7 @@ public class TransmissionTypeController {
     @Autowired
     private TransmissionTypeDtoMapper transmissionTypeDtoMapper;
 
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "")
     public ResponseEntity<List<TransmissionTypeDto>> getAll() {
         try {
             List<TransmissionTypeDto> transmissionTypeDtos = this.transmissionTypeService.getAll().stream()
