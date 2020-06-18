@@ -37,12 +37,11 @@ public class AdvertisementController {
         System.out.println(createAdvertisementDto);
         try {
             AdvertisementResponse response = client.postAdvertisement(createAdvertisementDto);
-            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto);
+            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto, response);
             return new ResponseEntity<>(advertisementId, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
     }
 

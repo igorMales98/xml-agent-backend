@@ -23,6 +23,7 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
         request.setAvailableFrom(advertisement.getAvailableFrom().toString());
         request.setAvailableTo(advertisement.getAvailableTo().toString());
         request.setPricelistId(advertisement.getPricelist().getId());
+        request.setDiscount(advertisement.getDiscount());
 
         Car car = new Car();
         car.setAllowedDistance(advertisement.getAllowedDistance());
@@ -32,8 +33,9 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
         car.setFuelTypeId(advertisement.getFuelType().getId());
         car.setTransmissionTypeId(advertisement.getTransmissionType().getId());
         car.setCollisionDamageWaiverExists(advertisement.isHasACDW());
-        //car.setHasAndroid(advertisement.ANDROID);
+        car.setHasAndroid(advertisement.isHasAndroid());
         car.setMileage(advertisement.getMileage());
+
 
         request.setCar(car);
 

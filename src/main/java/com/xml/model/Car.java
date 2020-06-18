@@ -59,6 +59,9 @@ public class Car {
     @Column
     private boolean hasAndroid = false;
 
+    @Column
+    private Long realId;
+
     public Car() {
     }
 
@@ -166,4 +169,8 @@ public class Car {
     public void setCarModel(CarModel carModel) {
         this.carModel = carModel;
     }
+
+    public Long getRealId() { return realId; }
+
+    public void setRealId(Long realId) { this.realId = realId; }
 }
