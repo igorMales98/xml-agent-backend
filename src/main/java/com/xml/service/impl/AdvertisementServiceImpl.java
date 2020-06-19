@@ -1,5 +1,6 @@
 package com.xml.service.impl;
 
+import com.xml.RentCar.wsdl.AdvertisementResponse;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.mapper.*;
 import com.xml.model.Advertisement;
@@ -60,7 +61,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private UserService userService;
 
     @Override
-    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto) throws ParseException {
+    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto, AdvertisementResponse response) throws ParseException {
         Car newCar = new Car();
         try {
             newCar.setCarBrand(carBrandDtoMapper.toEntity(createAdvertisementDto.getCarBrand()));
@@ -75,6 +76,8 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        newCar.setRealId(response.getCarId());
         this.carService.save(newCar);
 
         User advertiser = this.userService.getUser(1L);
@@ -90,6 +93,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         advertisement.setAvailableTo(createAdvertisementDto.getAvailableTo());
         advertisement.setPricelist(pricelistDtoMapper.toEntity(createAdvertisementDto.getPricelist()));
         advertisement.setDiscount(createAdvertisementDto.convertToHashMap(createAdvertisementDto.getDiscount()));
+        advertisement.setRealId(response.getAdvertisementId());
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();

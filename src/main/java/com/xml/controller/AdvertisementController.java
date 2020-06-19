@@ -1,9 +1,11 @@
 package com.xml.controller;
 
+import com.xml.RentCar.wsdl.AdvertisementResponse;
 import com.xml.dto.AdvertisementDto;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.mapper.AdvertisementDtoMapper;
 import com.xml.service.AdvertisementService;
+import com.xml.soap.AdvertisementClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,16 +29,19 @@ public class AdvertisementController {
     @Autowired
     private AdvertisementDtoMapper advertisementDtoMapper;
 
+    @Autowired
+    private AdvertisementClient client;
+
     @PostMapping(value = "")
     public ResponseEntity<Long> createAdvertisement(@Valid @RequestBody CreateAdvertisementDto createAdvertisementDto) {
         System.out.println(createAdvertisementDto);
         try {
-            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto);
+            AdvertisementResponse response = client.postAdvertisement(createAdvertisementDto);
+            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto, response);
             return new ResponseEntity<>(advertisementId, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
     }
 

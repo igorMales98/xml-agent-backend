@@ -46,6 +46,9 @@ public class CreateAdvertisementDto {
     @NotNull
     private boolean hasACDW;
 
+    @NotNull
+    private boolean hasAndroid;
+
     @NotNull(message = "Mileage cannot be empty")
     @Min(value = 0)
     @Max(value = 1000000)
@@ -159,6 +162,10 @@ public class CreateAdvertisementDto {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    public boolean isHasAndroid() { return hasAndroid; }
+
+    public void setHasAndroid(boolean hasAndroid) { this.hasAndroid = hasAndroid; }
 
     @Override
     public String toString() {

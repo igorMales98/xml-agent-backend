@@ -28,6 +28,9 @@ public class Advertisement {
     @Column
     private LocalDateTime availableTo;
 
+    @Column
+    private Long realId;
+
     @OneToMany(mappedBy = "advertisement")
     private Set<Comment> comments;
 
@@ -107,4 +110,8 @@ public class Advertisement {
     public void setDiscount(Map<String, String> discount) {
         this.discount = discount;
     }
+
+    public Long getRealId() { return realId; }
+
+    public void setRealId(Long realId) { this.realId = realId; }
 }
