@@ -3,20 +3,20 @@ package com.xml.soap;
 import com.xml.RentCar.wsdl.AdvertisementRequest;
 import com.xml.RentCar.wsdl.AdvertisementResponse;
 import com.xml.RentCar.wsdl.Car;
-import com.xml.dto.AdvertisementDto;
 import com.xml.dto.CreateAdvertisementDto;
-import com.xml.model.Advertisement;
 import com.xml.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
+
+import java.io.IOException;
 
 public class AdvertisementClient extends WebServiceGatewaySupport {
 
     @Autowired
     AdvertisementService advertisementService;
 
-    public AdvertisementResponse postAdvertisement(CreateAdvertisementDto advertisement){
+    public AdvertisementResponse postAdvertisement(CreateAdvertisementDto advertisement) throws IOException {
 
         AdvertisementRequest request = new AdvertisementRequest();
         request.setAdvertiserId(1L);
