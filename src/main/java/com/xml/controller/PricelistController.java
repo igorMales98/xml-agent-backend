@@ -4,6 +4,7 @@ import com.xml.dto.PricelistDto;
 import com.xml.mapper.PricelistDtoMapper;
 import com.xml.model.Pricelist;
 import com.xml.service.PricelistService;
+import com.xml.soap.PricelistClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,6 +27,9 @@ public class PricelistController {
     @Autowired
     private PricelistDtoMapper pricelistDtoMapper;
 
+    @Autowired
+    private PricelistClient pricelistClient;
+
     @GetMapping(value = "")
     public ResponseEntity<List<PricelistDto>> getAll() {
         try {
@@ -41,6 +45,7 @@ public class PricelistController {
     public ResponseEntity<?> addPricelist(@Valid @RequestBody PricelistDto pricelistDto) {
         System.out.println("Stampa: " + pricelistDto.getPricePerDay());
         try {
+            this.pricelistClient.postPricelist(pricelistDto);
             this.pricelistService.savePricelist(pricelistDto);
             return new ResponseEntity<>(HttpStatus.OK);
 
@@ -55,13 +60,13 @@ public class PricelistController {
         try {
             this.pricelistService.deletePrice(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e){
-           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PutMapping(value = "")
-    public ResponseEntity<?> editPrice(@Valid @RequestBody PricelistDto pricelistDto){
+    public ResponseEntity<?> editPrice(@Valid @RequestBody PricelistDto pricelistDto) {
         try {
             this.pricelistService.editPrice(pricelistDto);
             return new ResponseEntity<>(HttpStatus.OK);

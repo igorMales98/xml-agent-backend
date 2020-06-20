@@ -1,6 +1,7 @@
 package com.xml.config;
 
 import com.xml.soap.AdvertisementClient;
+import com.xml.soap.PricelistClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -21,6 +22,15 @@ public class SoapConfig {
     public AdvertisementClient adClient(Jaxb2Marshaller marshaller) {
         AdvertisementClient client = new AdvertisementClient();
         client.setDefaultUri("http://localhost:8085/advertisement-service-schema/ws");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+    @Bean
+    public PricelistClient pricelistClient(Jaxb2Marshaller marshaller) {
+        PricelistClient client = new PricelistClient();
+        client.setDefaultUri("http://localhost:8084/codebook-service-schema/ws");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
