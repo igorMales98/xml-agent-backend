@@ -25,6 +25,9 @@ public class Pricelist {
     @OneToMany(mappedBy = "pricelist")
     private Set<Advertisement> advertisements;
 
+    @Column
+    private Long realId;
+
     public Long getId() {
         return id;
     }
@@ -71,5 +74,13 @@ public class Pricelist {
 
     public void setAdvertisements(Set<Advertisement> advertisements) {
         this.advertisements = advertisements;
+    }
+
+    public Long getRealId() {
+        return realId;
+    }
+
+    public void setRealId(Long realId) {
+        this.realId = realId;
     }
 }

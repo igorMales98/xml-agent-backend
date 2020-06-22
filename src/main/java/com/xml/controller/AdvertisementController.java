@@ -62,6 +62,9 @@ public class AdvertisementController {
         try {
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getInPeriod(dateFrom, dateTo).stream()
                     .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
+            for (AdvertisementDto advertisementDto : advertisementDtos) {
+                advertisementDto.setImg(this.advertisementService.getAdvertisementPhotos(advertisementDto.getId()));
+            }
             return new ResponseEntity<>(advertisementDtos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

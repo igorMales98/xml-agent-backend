@@ -1,5 +1,6 @@
 package com.xml.controller;
 
+import com.xml.RentCar.wsdl.PricelistResponse;
 import com.xml.dto.PricelistDto;
 import com.xml.mapper.PricelistDtoMapper;
 import com.xml.model.Pricelist;
@@ -45,8 +46,8 @@ public class PricelistController {
     public ResponseEntity<?> addPricelist(@Valid @RequestBody PricelistDto pricelistDto) {
         System.out.println("Stampa: " + pricelistDto.getPricePerDay());
         try {
-            this.pricelistClient.postPricelist(pricelistDto);
-            this.pricelistService.savePricelist(pricelistDto);
+            PricelistResponse response = this.pricelistClient.postPricelist(pricelistDto);
+            this.pricelistService.savePricelist(pricelistDto, response);
             return new ResponseEntity<>(HttpStatus.OK);
 
         } catch (Exception e) {
