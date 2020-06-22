@@ -56,7 +56,7 @@ public class AdvertisementController {
         }
     }
 
-    @GetMapping(value = "/getInPeriod/{dateFrom}/{dateTo}")
+    @GetMapping(value = "/inPeriod/{dateFrom}/{dateTo}")
     public ResponseEntity<List<AdvertisementDto>> getInPeriod(@PathVariable("dateFrom") String dateFrom,
                                                               @PathVariable("dateTo") String dateTo) {
         try {
@@ -96,7 +96,7 @@ public class AdvertisementController {
         }
     }*/
 
-    @GetMapping(value = "/getTimesRented/{id}")
+    @GetMapping(value = "/timesRented/{id}")
     public ResponseEntity<Integer> getTimesRented(@PathVariable("id") Long id) {
         try {
             Integer timesRented = this.advertisementService.getTimesRented(id);

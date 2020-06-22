@@ -50,7 +50,7 @@ public class RentRequestController {
 
     }
 
-    @GetMapping(value = "/getFinishedRents")
+    @GetMapping(value = "/finished")
     public ResponseEntity<List<RentRequestDto>> getFinishedRents() {
         try {
             List<RentRequestDto> rentRequests = this.rentRequestService.getFinishedRents().stream()

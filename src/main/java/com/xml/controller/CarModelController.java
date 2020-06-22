@@ -23,10 +23,10 @@ public class CarModelController {
     @Autowired
     private CarModelDtoMapper carModelDtoMapper;
 
-    @GetMapping(value = "/getBrandModels/{modelId}")
-    public ResponseEntity<List<CarModelDto>> getBrandModels(@PathVariable("modelId") Long modelId) {
+    @GetMapping(value = "/{brandId}")
+    public ResponseEntity<List<CarModelDto>> getBrandModels(@PathVariable("brandId") Long brandId) {
         try {
-            List<CarModelDto> carModelDtos = this.carModelService.getBrandModels(modelId).stream()
+            List<CarModelDto> carModelDtos = this.carModelService.getBrandModels(brandId).stream()
                     .map(carModelDtoMapper::toDto).collect(Collectors.toList());
             return new ResponseEntity<>(carModelDtos, HttpStatus.OK);
         } catch (Exception e) {

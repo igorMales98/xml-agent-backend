@@ -27,7 +27,7 @@ public class MessageController
     @Autowired
     private MessageDtoMapper messageDtoMapper;
 
-    @GetMapping(value = "/getReservedCustomers/{agentId}")
+    @GetMapping(value = "/reservedCustomers/{agentId}")
     public ResponseEntity<?> getReservedCustomers(@PathVariable("agentId") Long agentId) {
         try {
             List<UserDto> userDtos = this.messageService.getReservedCustomers(agentId).stream()

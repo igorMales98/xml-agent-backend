@@ -34,7 +34,7 @@ public class ReportController {
         }
     }
 
-    @GetMapping(value = "/getRentMileage/{id}")
+    @GetMapping(value = "/rentMileage/{id}")
     public ResponseEntity<Float> getRentMileage(@PathVariable("id") Long carId) {
         try {
             float mileage = this.reportService.getRentMileage(carId);

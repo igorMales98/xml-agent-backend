@@ -16,8 +16,8 @@ public class CarModelServiceImpl implements CarModelService {
     private CarModelRepository carModelRepository;
 
     @Override
-    public List<CarModel> getBrandModels(Long modelId) {
-        return this.enabledModels(this.carModelRepository.getBrandModels(modelId));
+    public List<CarModel> getBrandModels(Long brandId) {
+        return this.enabledModels(this.carModelRepository.getBrandModels(brandId));
     }
 
     private List<CarModel> enabledModels(List<CarModel> carModels) {
