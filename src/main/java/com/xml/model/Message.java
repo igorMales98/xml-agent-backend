@@ -1,5 +1,6 @@
 package com.xml.model;
 
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import com.xml.dto.MessageDto;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Message {
     private User receiver;
 
     @Column
-    private String message;
+    private @SQLInjectionSafe String message;
 
     @Column
     private LocalDateTime messageDate;

@@ -1,18 +1,20 @@
 package com.xml.dto;
 
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
+
 public class UserDto {
 
     private Long id;
-    private String type;
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String country;
-    private String city;
-    private String address;
-    private String email;
-    private String phone;
+    private @SQLInjectionSafe String type;
+    private @SQLInjectionSafe String username;
+    private @SQLInjectionSafe String password;
+    private @SQLInjectionSafe String firstName;
+    private @SQLInjectionSafe String lastName;
+    private @SQLInjectionSafe String country;
+    private @SQLInjectionSafe String city;
+    private @SQLInjectionSafe String address;
+    private @SQLInjectionSafe String email;
+    private @SQLInjectionSafe String phone;
     private boolean enabled;
 
     public UserDto() {

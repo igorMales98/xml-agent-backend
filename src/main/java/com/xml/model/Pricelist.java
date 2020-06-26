@@ -1,5 +1,6 @@
 package com.xml.model;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,13 +12,13 @@ public class Pricelist {
     private Long id;
 
     @Column
-    private Float pricePerDay;
+    protected Float pricePerDay;
 
     @Column
-    private Float pricePerKm;
+    protected Float pricePerKm;
 
     @Column
-    private Float priceForCDW;
+    protected Float priceForCDW;
 
     @Column(name = "enabled")
     private boolean enabled = true;
