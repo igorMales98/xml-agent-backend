@@ -1,6 +1,7 @@
 package com.xml.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import com.xml.model.Advertisement;
 import com.xml.model.RentRequest;
 
@@ -9,7 +10,7 @@ public class ReportDto {
     private Long id;
     private CarDto car;
     private float km;
-    private String additionalInformation;
+    private @SQLInjectionSafe String additionalInformation;
     private RentRequestDto rentRequest;
 
     public ReportDto() {

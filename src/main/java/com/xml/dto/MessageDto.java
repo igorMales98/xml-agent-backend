@@ -1,5 +1,6 @@
 package com.xml.dto;
 
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import com.xml.model.User;
 
 import javax.validation.constraints.NotBlank;
@@ -16,7 +17,7 @@ public class MessageDto {
     private User receiver;
 
     @NotBlank(message = "Message cannot be empty")
-    private String message;
+    private @SQLInjectionSafe String message;
 
     @NotNull
     private LocalDateTime messageDate;

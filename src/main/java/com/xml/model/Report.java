@@ -1,6 +1,7 @@
 package com.xml.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 import org.owasp.encoder.Encode;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class Report {
     private float km;
 
     @Column
-    private String additionalInformation;
+    private @SQLInjectionSafe String additionalInformation;
 
     public Report() {
     }

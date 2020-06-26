@@ -1,6 +1,7 @@
 package com.xml.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.rkpunjal.sqlsafe.SQLInjectionSafe;
 
 import javax.persistence.*;
 
@@ -20,34 +21,34 @@ public class User {
     protected Long id;
 
     @Column(insertable = false, updatable = false)
-    protected String type;
+    protected @SQLInjectionSafe String type;
 
     @Column(nullable = false)
-    protected String username;
+    protected @SQLInjectionSafe String username;
 
     @Column(nullable = false)
-    protected String password;
+    protected @SQLInjectionSafe String password;
 
     @Column
-    protected String firstName;
+    protected @SQLInjectionSafe String firstName;
 
     @Column
-    protected String lastName;
+    protected @SQLInjectionSafe String lastName;
 
     @Column(nullable = false)
-    protected String country;
+    protected @SQLInjectionSafe String country;
 
     @Column(nullable = false)
-    protected String city;
+    protected @SQLInjectionSafe String city;
 
     @Column(nullable = false)
-    protected String address;
+    protected @SQLInjectionSafe String address;
 
     @Column(nullable = false)
-    protected String email;
+    protected @SQLInjectionSafe String email;
 
     @Column(nullable = false)
-    protected String phone;
+    protected @SQLInjectionSafe String phone;
 
     @Column
     protected boolean enabled;
