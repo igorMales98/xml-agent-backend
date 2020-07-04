@@ -1,9 +1,10 @@
 package com.xml.controller;
 
+import com.xml.RentCar.wsdl.RentRequestResponse;
 import com.xml.dto.RentRequestDto;
 import com.xml.mapper.RentRequestDtoMapper;
-import com.xml.model.RentRequest;
 import com.xml.service.RentRequestService;
+import com.xml.soap.RentRequestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,9 +26,13 @@ public class RentRequestController {
     @Autowired
     private RentRequestDtoMapper rentRequestDtoMapper;
 
+    @Autowired
+    private RentRequestClient rentRequestClient;
+
     @PostMapping(value = "")
     public ResponseEntity<?> createRentRequest(@Valid @RequestBody RentRequestDto rentRequestDto) {
         try {
+            RentRequestResponse response = this.rentRequestClient.postRentRequest(rentRequestDto);
             this.rentRequestService.createRentRequest(rentRequestDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {

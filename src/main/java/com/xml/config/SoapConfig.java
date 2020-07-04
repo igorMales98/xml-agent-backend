@@ -2,6 +2,7 @@ package com.xml.config;
 
 import com.xml.soap.AdvertisementClient;
 import com.xml.soap.PricelistClient;
+import com.xml.soap.RentRequestClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -35,4 +36,15 @@ public class SoapConfig {
         client.setUnmarshaller(marshaller);
         return client;
     }
+
+    @Bean
+    public RentRequestClient rentRequestClient(Jaxb2Marshaller marshaller) {
+        RentRequestClient client = new RentRequestClient();
+        client.setDefaultUri("http://localhost:8089/rent-request-service-schema/ws");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+
 }
