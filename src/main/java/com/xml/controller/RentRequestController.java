@@ -33,6 +33,7 @@ public class RentRequestController {
     public ResponseEntity<?> createRentRequest(@Valid @RequestBody RentRequestDto rentRequestDto) {
         try {
             RentRequestResponse response = this.rentRequestClient.postRentRequest(rentRequestDto);
+            System.out.println("Response: " + response.getRentRequestId());
             this.rentRequestService.createRentRequest(rentRequestDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
