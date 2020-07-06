@@ -36,7 +36,6 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
         car.setHasAndroid(advertisement.isHasAndroid());
         car.setMileage(advertisement.getMileage());
 
-
         request.setCar(car);
 
         AdvertisementResponse response = (AdvertisementResponse) getWebServiceTemplate()

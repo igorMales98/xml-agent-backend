@@ -7,6 +7,7 @@ import com.xml.mapper.MessageDtoMapper;
 import com.xml.mapper.UserDtoMapper;
 import com.xml.model.Message;
 import com.xml.service.MessageService;
+import com.xml.soap.MessageClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,8 @@ public class MessageController
     private UserDtoMapper userDtoMapper;
     @Autowired
     private MessageDtoMapper messageDtoMapper;
+    @Autowired
+    private MessageClient messageClient;
 
     @GetMapping(value = "/reservedCustomers/{agentId}")
     public ResponseEntity<?> getReservedCustomers(@PathVariable("agentId") Long agentId) {
@@ -54,11 +57,13 @@ public class MessageController
     public ResponseEntity<?> sendMessage(@RequestBody MessageDto messageDto) {
         try {
             //TODO: sender-senderId
+            this.messageClient.postMessage(messageDto);
             this.messageService.sendMessage(messageDto);
             System.out.println("usao1");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("usao2");
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

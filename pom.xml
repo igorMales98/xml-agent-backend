@@ -117,6 +117,12 @@
                         <schema>
                             <url>http://localhost:8084/ws/pricelistSchema.wsdl</url>
                         </schema>
+                        <schema>
+                            <url>http://localhost:8089/ws/rentRequestSchema.wsdl</url>
+                        </schema>
+                        <schema>
+                            <url>http://localhost:8088/ws/messageSchema.wsdl</url>
+                        </schema>
                     </schemas>
                 </configuration>
             </plugin>
