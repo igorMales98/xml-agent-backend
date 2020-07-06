@@ -109,10 +109,10 @@ INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`,
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('4', '2020-05-10 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '4', '3');
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('5', '2020-04-10 22:00:00.000000', '2020-04-25 22:00:00.000000', '1', '5', '5');
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('6', '2020-04-10 22:00:00.000000', '2020-06-25 22:00:00.000000', '1', '6', '7');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('7', '2020-05-01 22:00:00.000000', '2020-07-05 22:00:00.000000', '1', '7', '4');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('7', '2020-05-01 22:00:00.000000', '2020-08-05 22:00:00.000000', '1', '7', '4');
 INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('8', '2020-05-25 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '8', '7');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('9', '2020-06-10 22:00:00.000000', '2020-07-05 22:00:00.000000', '1', '9', '2');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('10', '2020-05-01 22:00:00.000000', '2020-06-01 22:00:00.000000', '1', '10', '3');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('9', '2020-06-10 22:00:00.000000', '2020-08-05 22:00:00.000000', '1', '9', '2');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('10', '2020-05-01 22:00:00.000000', '2020-08-01 22:00:00.000000', '1', '10', '3');
 
 /* advertisement-discount */
 INSERT INTO `xml-agent`.`advertisement_discount` (`advertisement_id`, `discount`, `days`) VALUES ('1', '10', '10');
