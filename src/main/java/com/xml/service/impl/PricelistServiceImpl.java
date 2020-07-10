@@ -29,14 +29,14 @@ public class PricelistServiceImpl implements PricelistService {
     }
 
     @Override
-    public void savePricelist(PricelistDto pricelistDto, PricelistResponse response) {
+    public void savePricelist(PricelistDto pricelistDto/*, PricelistResponse response*/) {
         Pricelist newPricelist = new Pricelist();
 
         newPricelist.setPricePerDay(pricelistDto.getPricePerDay());
         newPricelist.setPricePerKm(pricelistDto.getPricePerKm());
         newPricelist.setPriceForCDW(pricelistDto.getPriceForCDW());
         newPricelist.setEnabled(true);
-        newPricelist.setRealId(response.getPricelistId());
+        //newPricelist.setRealId(response.getPricelistId());
 
         this.pricelistRepository.save(newPricelist);
     }

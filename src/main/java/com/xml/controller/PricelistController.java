@@ -46,11 +46,12 @@ public class PricelistController {
     public ResponseEntity<?> addPricelist(@Valid @RequestBody PricelistDto pricelistDto) {
         System.out.println("Stampa: " + pricelistDto.getPricePerDay());
         try {
-            PricelistResponse response = this.pricelistClient.postPricelist(pricelistDto);
-            this.pricelistService.savePricelist(pricelistDto, response);
+            //PricelistResponse response = this.pricelistClient.postPricelist(pricelistDto);
+            this.pricelistService.savePricelist(pricelistDto/*, response*/);
             return new ResponseEntity<>(HttpStatus.OK);
 
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
