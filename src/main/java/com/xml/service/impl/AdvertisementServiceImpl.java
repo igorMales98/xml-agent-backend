@@ -83,7 +83,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private CarRepository carRepository;
 
     @Override
-    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto/*, AdvertisementResponse response*/) throws ParseException {
+    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto, AdvertisementResponse response) throws ParseException {
         Car newCar = new Car();
         try {
             newCar.setCarBrand(carBrandDtoMapper.toEntity(createAdvertisementDto.getCarBrand()));
@@ -113,7 +113,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             e.printStackTrace();
         }
 
-        //newCar.setRealId(response.getCarId());
+        newCar.setRealId(response.getCarId());
         this.carService.save(newCar);
 
         User advertiser = this.userService.getUser(1L);
@@ -129,7 +129,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         advertisement.setAvailableTo(createAdvertisementDto.getAvailableTo());
         advertisement.setPricelist(pricelistDtoMapper.toEntity(createAdvertisementDto.getPricelist()));
         advertisement.setDiscount(createAdvertisementDto.convertToHashMap(createAdvertisementDto.getDiscount()));
-        //advertisement.setRealId(response.getAdvertisementId());
+        advertisement.setRealId(response.getAdvertisementId());
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();

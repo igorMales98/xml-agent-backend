@@ -1,5 +1,7 @@
 package com.xml.service.impl;
 
+import com.xml.RentCar.wsdl.GetMessagesResponse;
+import com.xml.RentCar.wsdl.MessageResponse;
 import com.xml.dto.MessageDto;
 import com.xml.enummeration.RentRequestStatus;
 import com.xml.model.Advertisement;
@@ -75,12 +77,42 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public void sendMessage(MessageDto messageDto) {
+    public void sendMessage(MessageDto messageDto, MessageResponse response) {
         Message message = new Message();
         message.setMessage(messageDto.getMessage());
         message.setReceiver(messageDto.getReceiver());
         message.setSender(userRepository.findOneById(1L));
         message.setMessageDate(LocalDateTime.now()); //cuva dva sata ranije, a na frontu dobro prikazuje
+        message.setRealId(response.getMessageId());
         messageRepository.save(message);
+    }
+
+    @Override
+    public void saveMessagesFromServer(GetMessagesResponse getMessagesResponse) {
+
+        List<Message> all = this.messageRepository.findAll();
+        List<Long> ids = new ArrayList<>();
+
+        for(Message mess : all){
+            ids.add(mess.getRealId());
+        }
+
+        for(com.xml.RentCar.wsdl.Message messageResp: getMessagesResponse.getMessage()){
+            for(Long id : ids){
+                if(!ids.contains(messageResp.getId())){
+                    Message newMessage = new Message();
+                    newMessage.setMessageDate(LocalDateTime.parse(messageResp.getMessageDate()));
+                    newMessage.setMessage(messageResp.getMessage());
+                    newMessage.setReceiver(this.userRepository.findById(messageResp.getRecieverId()).get());
+                    newMessage.setSender(this.userRepository.findById(messageResp.getSenderId()).get());
+                    newMessage.setRealId(messageResp.getId());
+
+                    this.messageRepository.save(newMessage);
+                    this.messageRepository.flush();
+
+                    break;
+                }
+            }
+        }
     }
 }

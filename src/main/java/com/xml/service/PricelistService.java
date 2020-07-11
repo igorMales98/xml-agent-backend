@@ -9,7 +9,7 @@ import java.util.List;
 public interface PricelistService {
 
     List<Pricelist> getAll();
-    void savePricelist(PricelistDto pricelistDto/*, PricelistResponse response*/);
+    void savePricelist(PricelistDto pricelistDto, PricelistResponse response);
     void deletePrice(Long id);
     void editPrice(PricelistDto pricelistDto);
 

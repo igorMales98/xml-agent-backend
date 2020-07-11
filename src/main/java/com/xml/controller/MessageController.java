@@ -1,5 +1,7 @@
 package com.xml.controller;
 
+import com.xml.RentCar.wsdl.GetMessagesResponse;
+import com.xml.RentCar.wsdl.MessageResponse;
 import com.xml.dto.CommentDto;
 import com.xml.dto.MessageDto;
 import com.xml.dto.UserDto;
@@ -44,6 +46,8 @@ public class MessageController
     @GetMapping(value = "/{agentId}/{customerId}")
     public ResponseEntity<?> getMessages(@PathVariable("agentId") Long agentId,@PathVariable("customerId") Long customerId) {
         try {
+            GetMessagesResponse poruke = this.messageClient.getMessages();
+            this.messageService.saveMessagesFromServer(poruke);
             List<MessageDto> messageDtos = this.messageService.getMessages(agentId,customerId).stream()
                     .map(messageDtoMapper::toDto).collect(Collectors.toList());
             return new ResponseEntity<>(messageDtos, HttpStatus.OK);
@@ -57,8 +61,8 @@ public class MessageController
     public ResponseEntity<?> sendMessage(@RequestBody MessageDto messageDto) {
         try {
             //TODO: sender-senderId
-            this.messageClient.postMessage(messageDto);
-            this.messageService.sendMessage(messageDto);
+            MessageResponse response = this.messageClient.postMessage(messageDto);
+            this.messageService.sendMessage(messageDto, response);
             System.out.println("usao1");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

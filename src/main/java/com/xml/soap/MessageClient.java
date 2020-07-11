@@ -1,11 +1,11 @@
 package com.xml.soap;
 
-import com.xml.RentCar.wsdl.MessageRequest;
-import com.xml.RentCar.wsdl.MessageResponse;
+import com.xml.RentCar.wsdl.*;
 import com.xml.dto.MessageDto;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class MessageClient extends WebServiceGatewaySupport {
@@ -23,5 +23,18 @@ public class MessageClient extends WebServiceGatewaySupport {
                         new SoapActionCallback("http://localhost:8088/ws/message-service-schema/messageRequest"));
 
         return response;
+    }
+
+    public GetMessagesResponse getMessages() throws IOException {
+
+        GetMessagesRequest request = new GetMessagesRequest();
+        request.setSenderId(1L);
+
+        GetMessagesResponse response = (GetMessagesResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8088/ws/message-service-schema", request,
+                        new SoapActionCallback("http://localhost:8088/ws/message-service-schema/getMessagesRequest"));
+
+        return response;
+
     }
 }
