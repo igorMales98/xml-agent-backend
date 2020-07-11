@@ -1,6 +1,7 @@
 package com.xml.service;
 
 import com.xml.RentCar.wsdl.AdvertisementResponse;
+import com.xml.RentCar.wsdl.GetAdvertisementsResponse;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.model.Advertisement;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,4 +22,6 @@ public interface AdvertisementService {
     List<Advertisement> getAll(Long agentId);
 
     Integer getTimesRented(Long id);
+
+    void saveServerAdvertisements(GetAdvertisementsResponse response);
 }
