@@ -1,6 +1,7 @@
 package com.xml.controller;
 
 import com.xml.RentCar.wsdl.AdvertisementResponse;
+import com.xml.RentCar.wsdl.GetAdvertisementsResponse;
 import com.xml.dto.AdvertisementDto;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.mapper.AdvertisementDtoMapper;
@@ -76,9 +77,15 @@ public class AdvertisementController {
         try {
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
                     .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
+
+            GetAdvertisementsResponse adsFromMicroservices =  this.client.getAgentAdvertisements();
+            this.advertisementService.saveServerAdvertisements(adsFromMicroservices);
+
             for (AdvertisementDto advertisementDto : advertisementDtos) {
                 advertisementDto.setImg(this.advertisementService.getAdvertisementPhotos(advertisementDto.getId()));
             }
+
+
             return new ResponseEntity<>(advertisementDtos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

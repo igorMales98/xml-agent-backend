@@ -1,8 +1,6 @@
 package com.xml.soap;
 
-import com.xml.RentCar.wsdl.AdvertisementRequest;
-import com.xml.RentCar.wsdl.AdvertisementResponse;
-import com.xml.RentCar.wsdl.Car;
+import com.xml.RentCar.wsdl.*;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,6 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
         car.setHasAndroid(advertisement.isHasAndroid());
         car.setMileage(advertisement.getMileage());
 
-
         request.setCar(car);
 
         AdvertisementResponse response = (AdvertisementResponse) getWebServiceTemplate()
@@ -45,4 +42,17 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
 
         return response;
     }
+
+    public GetAdvertisementsResponse getAgentAdvertisements() throws IOException {
+
+        GetAdvertisementsRequest request = new GetAdvertisementsRequest();
+        request.setAgentId(2L);
+
+        GetAdvertisementsResponse response = (GetAdvertisementsResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8085/ws/advertisement-service-schema", request,
+                        new SoapActionCallback("http://localhost:8085/ws/advertisement-service-schema/getAdvertisementsRequest"));
+
+        return response;
+    }
+
 }

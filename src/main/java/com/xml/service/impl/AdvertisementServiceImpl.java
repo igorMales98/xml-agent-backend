@@ -1,12 +1,13 @@
 package com.xml.service.impl;
 
 import com.xml.RentCar.wsdl.AdvertisementResponse;
+import com.xml.RentCar.wsdl.GetAdvertisementsResponse;
 import com.xml.dto.CreateAdvertisementDto;
 import com.xml.mapper.*;
 import com.xml.model.Advertisement;
 import com.xml.model.Car;
 import com.xml.model.User;
-import com.xml.repository.AdvertisementRepository;
+import com.xml.repository.*;
 import com.xml.service.AdvertisementService;
 import com.xml.service.CarService;
 import com.xml.service.UserService;
@@ -23,10 +24,7 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -60,6 +58,30 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CarBrandRepository carBrandRepository;
+
+    @Autowired
+    private  CarModelRepository carModelRepository;
+
+    @Autowired
+    private CarClassRepository carClassRepository;
+
+    @Autowired
+    private TransmissionTypeRepository transmissionTypeRepository;
+
+    @Autowired
+    private FuelTypeRepository fuelTypeRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PricelistRepository pricelistRepository;
+
+    @Autowired
+    private CarRepository carRepository;
+
     @Override
     public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto, AdvertisementResponse response) throws ParseException {
         Car newCar = new Car();
@@ -73,6 +95,20 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             newCar.setCollisionDamageWaiverExists(createAdvertisementDto.isHasACDW());
             newCar.setChildSeats(createAdvertisementDto.getChildSeats());
             newCar.setAllowedDistance(createAdvertisementDto.getAllowedDistance());
+            newCar.setHasAndroid(createAdvertisementDto.isHasAndroid());
+
+            if (newCar.isHasAndroid()) {
+                int leftLimit = 97; // letter 'a'
+                int rightLimit = 122; // letter 'z'
+                int targetStringLength = 10;
+                Random random = new Random();
+                String generatedString = random.ints(leftLimit, rightLimit + 1)
+                        .limit(targetStringLength)
+                        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                        .toString();
+                newCar.setAndroidToken(generatedString);
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -158,5 +194,53 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     public Integer getTimesRented(Long id) {
         Car car = this.carService.getOne(id);
         return this.advertisementRepository.getTimesRented(id);
+    }
+
+    @Override
+    public void saveServerAdvertisements(GetAdvertisementsResponse response) {
+        List<Advertisement> advertisements = this.advertisementRepository.findAll();
+        List<Long> ids = new ArrayList<>();
+        for(Advertisement add : advertisements){
+            ids.add(add.getRealId());
+        }
+
+        for (com.xml.RentCar.wsdl.Advertisement adTemp : response.getAdvertisement()) {
+            for (Long id : ids) {
+                if (!ids.contains(adTemp.getId())) {
+                    Advertisement advertisement = new Advertisement();
+                    advertisement.setAvailableFrom(LocalDateTime.parse(adTemp.getAvailableFrom()));
+                    advertisement.setAvailableTo(LocalDateTime.parse(adTemp.getAvailableTo()));
+                    advertisement.setPricelist(this.pricelistRepository.findById(adTemp.getPricelistId()).get());
+
+                    Car car = new Car();
+                    car.setCarBrand(this.carBrandRepository.findById(adTemp.getCar().getCarBrandId()).get());
+                    car.setCarModel(this.carModelRepository.findById(adTemp.getCar().getCarModelId()).get());
+                    car.setCarClass(this.carClassRepository.findById(adTemp.getCar().getCarClassId()).get());
+                    car.setTransmissionType(this.transmissionTypeRepository.findById(adTemp.getCar().getTransmissionTypeId()).get());
+                    car.setFuelType(this.fuelTypeRepository.findById(adTemp.getCar().getFuelTypeId()).get());
+                    car.setCollisionDamageWaiverExists(adTemp.getCar().isCollisionDamageWaiverExists());
+                    car.setHasAndroid(adTemp.getCar().isHasAndroid());
+                    car.setMileage(adTemp.getCar().getMileage());
+                    car.setAllowedDistance(adTemp.getCar().getAllowedDistance());
+                    car.setAverageRating(adTemp.getCar().getAverageRating());
+                    car.setTimesRated(adTemp.getCar().getTimesRated());
+                    car.setChildSeats(1);
+                    this.carRepository.save(car);
+                    this.carRepository.flush();
+
+                    advertisement.setCar(car);
+
+                    User user = this.userRepository.findOneById(adTemp.getAdvertiserId());
+
+                    advertisement.setAdvertiser(user);
+                    advertisement.setRealId(adTemp.getId());
+
+                    this.advertisementRepository.save(advertisement);
+                    break;
+
+                }
+            }
+        }
+
     }
 }
