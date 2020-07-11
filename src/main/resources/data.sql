@@ -98,16 +98,16 @@ INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `pri
 INSERT INTO `xml-agent`.`pricelist` (`id`, `price_forcdw`, `price_per_day`, `price_per_km`, `enabled`) VALUES ('7', '50', '11', '1', b'1');
 
 /* advertisements */
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('1', '2020-05-01 22:00:00.000000', '2020-05-20 22:00:00.000000', '1', '1', '1', '1');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('2', '2020-05-01 22:00:00.000000', '2020-05-25 22:00:00.000000', '1', '2', '1', '2');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('3', '2020-05-01 22:00:00.000000', '2020-05-20 22:00:00.000000', '1', '3', '2');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('4', '2020-05-10 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '4', '3', '4');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('5', '2020-04-10 22:00:00.000000', '2020-04-25 22:00:00.000000', '1', '5', '5', '5');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('6', '2020-04-10 22:00:00.000000', '2020-06-25 22:00:00.000000', '1', '6', '7');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('7', '2020-05-01 22:00:00.000000', '2020-08-05 22:00:00.000000', '1', '7', '4');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('8', '2020-05-25 22:00:00.000000', '2020-06-05 22:00:00.000000', '1', '8', '7');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('9', '2020-06-10 22:00:00.000000', '2020-08-05 22:00:00.000000', '1', '9', '2');
-INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`) VALUES ('10', '2020-05-01 22:00:00.000000', '2020-08-01 22:00:00.000000', '1', '10', '3');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('1', '2020-07-01 22:00:00.000000', '2020-07-20 22:00:00.000000', '2', '1', '1', '1');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('2', '2020-07-01 22:00:00.000000', '2020-07-25 22:00:00.000000', '2', '2', '1', '2');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('3', '2020-07-01 22:00:00.000000', '2020-07-20 22:00:00.000000', '2', '3', '2', '3');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('4', '2020-07-10 22:00:00.000000', '2020-07-05 22:00:00.000000', '2', '4', '3', '4');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('5', '2020-07-10 22:00:00.000000', '2020-07-25 22:00:00.000000', '2', '5', '5', '5');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('6', '2020-07-10 22:00:00.000000', '2020-08-25 22:00:00.000000', '2', '6', '7', '6');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('7', '2020-07-01 22:00:00.000000', '2020-08-05 22:00:00.000000', '2', '7', '4', '7');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('8', '2020-07-25 22:00:00.000000', '2020-08-05 22:00:00.000000', '2', '8', '7', '8');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('9', '2020-07-10 22:00:00.000000', '2020-08-05 22:00:00.000000', '2', '9', '2', '9');
+INSERT INTO `xml-agent`.`advertisement` (`id`, `available_from`, `available_to`, `advertiser_id`, `car_id`, `pricelist_id`, `real_id`) VALUES ('10', '2020-07-01 22:00:00.000000', '2020-08-01 22:00:00.000000', '2', '10', '3', '10');
 
 /* advertisement-discount */
 INSERT INTO `xml-agent`.`advertisement_discount` (`advertisement_id`, `discount`, `days`) VALUES ('1', '10', '10');
@@ -128,51 +128,53 @@ INSERT INTO `xml-agent`.`advertisement_discount` (`advertisement_id`, `discount`
 INSERT INTO `xml-agent`.`advertisement_discount` (`advertisement_id`, `discount`, `days`) VALUES ('4', '18', '17');
 
 /* comments */
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('1', b'1', 'Volvo je masinerija.', 'Kao tenk.', '1', '2');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'1', 'Auto je bas lep. Ide ovaj volvo', 'Jeste slazem se', '1', '5');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('3', b'1', 'Al je udoban.', 'Kao u duseku.', '1', '3');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('4', b'1', 'Auto je bas lep', 'Jeste slazem se', '2', '7');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('5', b'1', 'Auto je bas lep', 'Jeste slazem se', '3', '8');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('6', b'1', 'Sve je super', 'Jeste slazem se', '4', '5');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('7', b'1', 'Auto je bas lep', 'Jeste slazem se', '5', '2');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('8', b'1', 'Auto je bas lep', 'Jeste slazem se', '6', '6');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('9', b'1', 'Auto je bas lep', 'Jeste slazem se', '6', '2');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('10', b'1', 'Auto je bas lep', 'Jeste slazem se', '7', '3');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('11', b'1', 'Auto je bas lep', 'Jeste slazem se', '8', '4');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('12', b'1', 'Auto je bas lep', 'Jeste slazem se', '8', '5');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('13', b'1', 'Auto je bas lep', 'Jeste slazem se', '9', '6');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('14', b'1', 'Auto je bas lep', 'Jeste slazem se', '9', '7');
-INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('15', b'1', 'Auto je bas lep', 'Jeste slazem se', '10', '8');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('1', b'0', 'Volvo je masinerija.', 'Kao tenk.', '1', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('2', b'0', 'Auto je bas lep. Ide ovaj volvo', null, '1', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('3', b'1', 'Al je udoban.', 'Kao u duseku.', '1', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('4', b'0', 'Auto je bas lep', null, '2', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('5', b'1', 'Ne rade brisaci omg', 'Jeste slazem se', '3', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('6', b'1', 'Sve je super', null, '4', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('7', b'0', 'Njesra', null, '5', '1');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('8', b'1', 'Previse se cuje auspuh.', 'Hvala Vam, popravicemo to.', '6', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('9', b'1', 'Auto je bas lep', 'Jeste slazem se', '6', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('10', b'1', 'Mnogo trosi', null, '7', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('11', b'1', 'Auto je bas lep', null, '8', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('12', b'0', 'Krs, najiskrenije', 'Ok', '8', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('13', b'0', 'Koja sitara od auta', 'Jeste slazem se', '9', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('14', b'1', 'Auto je bas lep', 'Jeste slazem se', '9', '3');
+INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('15', b'0', 'Ukrali ste mi deset poena pozz', 'Jeste slazem se', '10', '3');
 
 /* messages */
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('1','cao','2020-05-06 19:48:40.614962','2','1','1');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('2','cao','2020-05-06 20:06:40.614962','1','2','2');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('3','sta radis?','2020-05-06 20:08:40.614962','2','1','3');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('4','nista','2020-05-06 20:10:40.614962','1','2','4');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('5','ti?','2020-05-06 20:10:40.614962','1','2','5');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('6','nista','2020-05-06 20:18:40.614962','2','1','6');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('1','cao','2020-05-06 19:48:40.614962','2','3','1');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('2','cao','2020-05-06 20:06:40.614962','3','2','2');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('3','sta radis?','2020-05-06 20:08:40.614962','2','3','3');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('4','nista','2020-05-06 20:10:40.614962','3','2','4');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('5','ti?','2020-05-06 20:10:40.614962','3','2','5');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('6','nista','2020-05-06 20:18:40.614962','2','3','6');
 
 /* rent-requests */
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('1', 'PENDING', '2020-05-11 17:58:00.000000', '2020-05-11 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('2', 'PENDING', '2020-05-11 17:58:00.000000', '2020-05-11 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('3', 'PENDING', '2020-05-11 17:58:00.000000', '2020-05-11 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('4', 'PENDING', '2020-05-11 17:58:00.000000', '2020-05-11 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('5', 'RESERVED', '2020-05-10 17:00:00.000000', '2020-05-15 17:00:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('6', 'RESERVED', '2020-06-01 17:58:00.000000', '2020-06-10 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('7', 'RESERVED', '2020-05-05 17:58:00.000000', '2020-06-10 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('8', 'PAID', '2020-05-01 17:58:00.000000', '2020-05-02 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('9', 'PAID', '2020-05-01 17:58:00.000000', '2020-05-03 17:58:00.000000', '2');
-INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('10', 'PAID', '2020-04-11 17:58:00.000000', '2020-04-21 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('1', 'PENDING', '2020-07-12 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('2', 'PENDING', '2020-07-13 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('3', 'PENDING', '2020-07-14 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('4', 'PENDING', '2020-07-15 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('5', 'CANCELLED', '2020-07-16 17:00:00.000000', '2020-08-01 17:00:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('6', 'CANCELLED', '2020-07-17 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('7', 'PAID', '2020-07-18 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('8', 'PAID', '2020-07-19 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('9', 'PAID', '2020-07-20 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
+INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('10', 'PAID', '2020-07-21 17:58:00.000000', '2020-08-01 17:58:00.000000', '2');
 
 /* rented-advertisements */
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('5', '3');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('1', '1');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('2', '2');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('3', '3');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('4', '4');
 INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('5', '4');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('6', '6');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('7', '7');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('8', '1');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('9', '2');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('9', '3');
-INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('10', '5');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('6', '4');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('7', '5');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('8', '6');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('9', '7');
+INSERT INTO `xml-agent`.`rented_advertisements` (`rent_request_id`, `advertisement_id`) VALUES ('10', '8');
 
 /* reports */
 INSERT INTO `xml-agent`.`report` (`id`, `additional_information`, `km`, `car_id`, `rent_request_id`) VALUES ('1', 'Isao je lepo bas', '100', '1', '8');
