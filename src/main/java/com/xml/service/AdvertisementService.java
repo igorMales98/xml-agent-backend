@@ -23,5 +23,5 @@ public interface AdvertisementService {
 
     Integer getTimesRented(Long id);
 
-    void saveServerAdvertisements(GetAdvertisementsResponse response);
+    void saveServerAdvertisements(GetAdvertisementsResponse response) throws IOException;
 }

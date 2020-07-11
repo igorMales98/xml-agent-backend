@@ -29,10 +29,10 @@ public class CommentController {
         try {
             List<CommentDto> commentDtos = this.commentService.getAll(adId).stream()
                     .map(commentDtoMapper::toDto).collect(Collectors.toList());
-            System.out.println("komentar: "+commentDtos.get(0).getComment());
             return new ResponseEntity<>(commentDtos, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("......");
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

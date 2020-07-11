@@ -81,8 +81,8 @@ public class MessageServiceImpl implements MessageService {
         Message message = new Message();
         message.setMessage(messageDto.getMessage());
         message.setReceiver(messageDto.getReceiver());
-        message.setSender(userRepository.findOneById(1L));
-        message.setMessageDate(LocalDateTime.now()); //cuva dva sata ranije, a na frontu dobro prikazuje
+        message.setSender(userRepository.findOneById(2L));
+        message.setMessageDate(LocalDateTime.now());
         message.setRealId(response.getMessageId());
         messageRepository.save(message);
     }

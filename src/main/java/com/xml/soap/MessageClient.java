@@ -16,7 +16,7 @@ public class MessageClient extends WebServiceGatewaySupport {
         request.setMessage(messageDto.getMessage());
         request.setMessageDate(LocalDateTime.now().toString());
         request.setRecieverId(messageDto.getReceiver().getId());
-        request.setSenderId(1L);
+        request.setSenderId(2L);
 
         MessageResponse response = (MessageResponse) getWebServiceTemplate()
                 .marshalSendAndReceive("http://localhost:8088/ws/message-service-schema", request,
@@ -28,7 +28,7 @@ public class MessageClient extends WebServiceGatewaySupport {
     public GetMessagesResponse getMessages() throws IOException {
 
         GetMessagesRequest request = new GetMessagesRequest();
-        request.setSenderId(1L);
+        request.setSenderId(2L);
 
         GetMessagesResponse response = (GetMessagesResponse) getWebServiceTemplate()
                 .marshalSendAndReceive("http://localhost:8088/ws/message-service-schema", request,

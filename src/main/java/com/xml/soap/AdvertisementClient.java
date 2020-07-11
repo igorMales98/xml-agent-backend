@@ -17,7 +17,7 @@ public class AdvertisementClient extends WebServiceGatewaySupport {
     public AdvertisementResponse postAdvertisement(CreateAdvertisementDto advertisement) throws IOException {
 
         AdvertisementRequest request = new AdvertisementRequest();
-        request.setAdvertiserId(1L);
+        request.setAdvertiserId(2L);
         request.setAvailableFrom(advertisement.getAvailableFrom().toString());
         request.setAvailableTo(advertisement.getAvailableTo().toString());
         request.setPricelistId(advertisement.getPricelist().getId());

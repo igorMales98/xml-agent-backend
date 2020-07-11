@@ -75,11 +75,12 @@ public class AdvertisementController {
     @GetMapping(value = "/{agentId}")
     public ResponseEntity<List<AdvertisementDto>> getAll(@PathVariable("agentId") Long agentId) {
         try {
+            GetAdvertisementsResponse adsFromMicroservices =  this.client.getAgentAdvertisements();
+            this.advertisementService.saveServerAdvertisements(adsFromMicroservices);
+
             List<AdvertisementDto> advertisementDtos = this.advertisementService.getAll(agentId).stream()
                     .map(advertisementDtoMapper::toDto).collect(Collectors.toList());
 
-            GetAdvertisementsResponse adsFromMicroservices =  this.client.getAgentAdvertisements();
-            this.advertisementService.saveServerAdvertisements(adsFromMicroservices);
 
             for (AdvertisementDto advertisementDto : advertisementDtos) {
                 advertisementDto.setImg(this.advertisementService.getAdvertisementPhotos(advertisementDto.getId()));

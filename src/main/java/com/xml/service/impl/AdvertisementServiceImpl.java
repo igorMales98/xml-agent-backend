@@ -11,6 +11,7 @@ import com.xml.repository.*;
 import com.xml.service.AdvertisementService;
 import com.xml.service.CarService;
 import com.xml.service.UserService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -116,7 +117,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         newCar.setRealId(response.getCarId());
         this.carService.save(newCar);
 
-        User advertiser = this.userService.getUser(1L);
+        User advertiser = this.userService.getUser(2L);
 
         Advertisement advertisement = new Advertisement();
         advertisement.setCar(newCar);
@@ -197,7 +198,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     }
 
     @Override
-    public void saveServerAdvertisements(GetAdvertisementsResponse response) {
+    public void saveServerAdvertisements(GetAdvertisementsResponse response) throws IOException {
         List<Advertisement> advertisements = this.advertisementRepository.findAll();
         List<Long> ids = new ArrayList<>();
         for(Advertisement add : advertisements){
@@ -236,6 +237,21 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                     advertisement.setRealId(adTemp.getId());
 
                     this.advertisementRepository.save(advertisement);
+                    this.advertisementRepository.flush();
+
+                    Path resourceDirectory = Paths.get("src", "main", "resources");
+                    String path = resourceDirectory.toFile().getAbsolutePath() + "\\images\\advertisement\\" + advertisement.getId() + "\\";
+                    if (!new File(path).exists()) {
+                        new File(path).mkdir();
+                    }
+
+                    String pathToAudi = resourceDirectory.toFile().getAbsolutePath() + File.separator + "images" + File.separator + "advertisement" +
+                            File.separator + "audi";
+
+                    File source = new File(pathToAudi);
+                    File dest = new File(path);
+                    FileUtils.copyDirectory(source, dest);
+
                     break;
 
                 }
