@@ -23,7 +23,7 @@ public class RentRequestClient extends WebServiceGatewaySupport {
         for(AdvertisementDto advertisementDto: advertisementsForRent){
             advertisementsForRentIds.add(advertisementDto.getId());
         }
-        request.setAdvertisementsForRent(advertisementsForRentIds);
+        //request.setAdvertisementsForRent(advertisementsForRentIds);
 
         User user = new User();
         user.setType(rentRequestDto.getCustomer().getType());
