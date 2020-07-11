@@ -56,11 +56,14 @@ public class Car {
     @Column
     private float averageRating = 0;
 
-    @Column
+    @Column(nullable = false)
     private boolean hasAndroid = false;
 
     @Column
     private Long realId;
+
+    @Column
+    private String androidToken;
 
     public Car() {
     }
@@ -173,4 +176,12 @@ public class Car {
     public Long getRealId() { return realId; }
 
     public void setRealId(Long realId) { this.realId = realId; }
+
+    public String getAndroidToken() {
+        return androidToken;
+    }
+
+    public void setAndroidToken(String androidToken) {
+        this.androidToken = androidToken;
+    }
 }

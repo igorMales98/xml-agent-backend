@@ -24,10 +24,7 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -86,7 +83,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private CarRepository carRepository;
 
     @Override
-    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto, AdvertisementResponse response) throws ParseException {
+    public Long saveAdvertisement(CreateAdvertisementDto createAdvertisementDto/*, AdvertisementResponse response*/) throws ParseException {
         Car newCar = new Car();
         try {
             newCar.setCarBrand(carBrandDtoMapper.toEntity(createAdvertisementDto.getCarBrand()));
@@ -98,11 +95,25 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             newCar.setCollisionDamageWaiverExists(createAdvertisementDto.isHasACDW());
             newCar.setChildSeats(createAdvertisementDto.getChildSeats());
             newCar.setAllowedDistance(createAdvertisementDto.getAllowedDistance());
+            newCar.setHasAndroid(createAdvertisementDto.isHasAndroid());
+
+            if (newCar.isHasAndroid()) {
+                int leftLimit = 97; // letter 'a'
+                int rightLimit = 122; // letter 'z'
+                int targetStringLength = 10;
+                Random random = new Random();
+                String generatedString = random.ints(leftLimit, rightLimit + 1)
+                        .limit(targetStringLength)
+                        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                        .toString();
+                newCar.setAndroidToken(generatedString);
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        newCar.setRealId(response.getCarId());
+        //newCar.setRealId(response.getCarId());
         this.carService.save(newCar);
 
         User advertiser = this.userService.getUser(1L);
@@ -118,7 +129,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         advertisement.setAvailableTo(createAdvertisementDto.getAvailableTo());
         advertisement.setPricelist(pricelistDtoMapper.toEntity(createAdvertisementDto.getPricelist()));
         advertisement.setDiscount(createAdvertisementDto.convertToHashMap(createAdvertisementDto.getDiscount()));
-        advertisement.setRealId(response.getAdvertisementId());
+        //advertisement.setRealId(response.getAdvertisementId());
         this.advertisementRepository.save(advertisement);
         this.advertisementRepository.flush();
         return advertisement.getId();
