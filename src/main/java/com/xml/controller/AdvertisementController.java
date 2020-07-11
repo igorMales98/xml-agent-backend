@@ -37,8 +37,8 @@ public class AdvertisementController {
     public ResponseEntity<Long> createAdvertisement(@Valid @RequestBody CreateAdvertisementDto createAdvertisementDto) {
         System.out.println(createAdvertisementDto);
         try {
-            //AdvertisementResponse response = client.postAdvertisement(createAdvertisementDto);
-            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto/*, response*/);
+            AdvertisementResponse response = client.postAdvertisement(createAdvertisementDto);
+            Long advertisementId = this.advertisementService.saveAdvertisement(createAdvertisementDto, response);
             return new ResponseEntity<>(advertisementId, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();

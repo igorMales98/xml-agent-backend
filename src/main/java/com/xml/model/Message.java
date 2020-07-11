@@ -28,6 +28,9 @@ public class Message {
     @Column
     private LocalDateTime messageDate;
 
+    @Column
+    private Long realId;
+
     public Long getId() {
         return id;
     }
@@ -67,4 +70,8 @@ public class Message {
     public void setMessageDate(LocalDateTime messageDate) {
         this.messageDate = messageDate;
     }
+
+    public Long getRealId() { return realId; }
+
+    public void setRealId(Long realId) { this.realId = realId; }
 }

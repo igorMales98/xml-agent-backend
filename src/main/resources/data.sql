@@ -150,12 +150,12 @@ INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advert
 INSERT INTO `xml-agent`.`comment` (`id`, `approved`, `comment`, `reply`, `advertisement_id`, `commenter_id`) VALUES ('15', b'1', 'Auto je bas lep', 'Jeste slazem se', '10', '8');
 
 /* messages */
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('1','cao','2020-05-06 19:48:40.614962','2','1');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('2','cao','2020-05-06 20:06:40.614962','1','2');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('3','sta radis?','2020-05-06 20:08:40.614962','2','1');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('4','nista','2020-05-06 20:10:40.614962','1','2');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('5','ti?','2020-05-06 20:10:40.614962','1','2');
-INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`) VALUES ('6','nista','2020-05-06 20:18:40.614962','2','1');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('1','cao','2020-05-06 19:48:40.614962','2','1','1');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('2','cao','2020-05-06 20:06:40.614962','1','2','2');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('3','sta radis?','2020-05-06 20:08:40.614962','2','1','3');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('4','nista','2020-05-06 20:10:40.614962','1','2','4');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('5','ti?','2020-05-06 20:10:40.614962','1','2','5');
+INSERT INTO `xml-agent`.`message` (`id`,`message`,`message_date`,`receiver_id`,`sender_id`, `real_id`) VALUES ('6','nista','2020-05-06 20:18:40.614962','2','1','6');
 
 /* rent-requests */
 INSERT INTO `xml-agent`.`rent_request` (`id`, `status`, `reserved_from`, `reserved_to`, `customer_id`) VALUES ('1', 'PENDING', '2020-05-11 17:58:00.000000', '2020-05-11 17:58:00.000000', '2');
